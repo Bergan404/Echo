@@ -4,6 +4,8 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+# flask socket
+from flask_socketio import SocketIO, send
 
 from .models import db, User
 from .api.user_routes import user_routes
@@ -14,6 +16,20 @@ from .seeds import seed_commands
 from .config import Config
 
 app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*")
+
+
+# Socket handler for receiving a message
+@socketio.on('message')
+def handleMessage(msg):
+    print("Message: " + msg)
+    send(msg, broadcast=True)
+    return None
+
+
+if __name__ == '__main__':
+    socketio.run(app)
+
 
 # Setup login manager
 login = LoginManager(app)
