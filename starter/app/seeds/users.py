@@ -19,16 +19,8 @@ def seed_users():
     jiaro = User(username='Jiaro', email='jiaro@aa.io', password='password', profile_picture='',
                 created_at=datetime.now())
 
-<<<<<<< HEAD
     batman = User(username='Batman', email='batmgan@gmail.com',
                 password='password', profile_picture='', created_at=datetime.now())
-=======
-    db.session.add(demo)
-    db.session.add(bergan)
-    db.session.add(mike)
-    db.session.add(chris)
-    db.session.add(jiaro)
->>>>>>> master
 
     db.session.add(demo)
     db.session.add(batman)

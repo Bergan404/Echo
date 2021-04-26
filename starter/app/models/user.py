@@ -21,7 +21,6 @@ server_users = db.Table(
 # -------------------- User Class Table --------------------------------
 # the MANY TO ONE of verything else on the table
 class User(db.Model, UserMixin):
-<<<<<<< HEAD
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
@@ -77,40 +76,3 @@ class Server(db.Model):
     channels = db.relationship('Channel', back_populates='servers')
     admin = db.relationship('User', back_populates='server_admin')
     users= db.relationship('User', secondary=server_users, back_populates='servers', lazy='dynamic')
-=======
-    __tablename__ = 'users'
-
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(255), nullable=False)
-    profile_picture = db.Column(db.String(255))
-    created_at = db.Column(db.Date)
-
-    # one to many relationship
-    servers = db.relationship('Server', back_populates='admin')
-    messages = db.relationship('Message', back_populates='user')
-    # one to one relationship
-    server_users = db.relationship(
-        'ServerUser', backref='users', uselist=False)
-    private_messages = db.relationship(
-        'PrivateMessage', back_populates='user', uselist=False)
-
-    @property
-    def password(self):
-        return self.hashed_password
-
-    @password.setter
-    def password(self, password):
-        self.hashed_password = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "email": self.email
-        }
->>>>>>> master
