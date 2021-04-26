@@ -31,5 +31,17 @@ def server_channels_messages(server_id, channel_id):
     #     print(message, '****************************')
     # messages = Message.query.join(User, Message.user_id == User.id).add_columns(User.username)
 
+    message = [message.to_dict() for message in messages]
+    print(message)
+    for user in message:
+        current_user= User.query.filter(User.id == user['user_id']).first()
+        user_object = current_user.to_dict()
+        user['username']= user_object['username']
+        try:
+            user['profile_picture']= user_object['profile_picture']
+        except:
+            pass
+    return {"message": message}
 
-    return {'message': [message.to_dict() for message in messages]}
+
+# do query on opening private messages
