@@ -1,0 +1,63 @@
+.users_servers {
+
+}
+.users_container a{
+    text-decoration: none;
+    color: black;
+}
+.user_h2 {
+    background-color: gray;
+    width: 300px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+.users_li {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+}
+.users_nav {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+.user_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.servers_container {
+
+}
+.server_h2 {
+    background-color: gray;
+    width: 300px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+.servers_li {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+}
+.server_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.servers_nav {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}

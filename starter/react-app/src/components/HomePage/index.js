@@ -1,0 +1,67 @@
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { findAllServers } from '../../store/server'
+
+import './homepage.css'
+
+
+export default function Home() {
+  const dispatch = useDispatch();
+  const servers = useSelector(state => state.servers)
+  const [users, setUsers] = useState([]);
+
+  useEffect(async () => {
+    await dispatch(findAllServers())
+  }, [dispatch])
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+
+  const userComponents = users.map((user) => {
+    return (
+      <li key={user.id} className="users_li">
+        <img className='user_image' src="https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"></img>
+        <br></br>
+        <NavLink className="users_nav" to={`/users/${user.id}`}>{user.username}</NavLink>
+      </li>
+    );
+  });
+
+  return (
+    <>
+    <div className='users_servers'>
+      <div className='users_container'>
+      <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active">
+          Users
+          {/* Currently brings to all users but we can fix that */}
+        </NavLink></h2>
+        {userComponents}
+      </div>
+
+      <div className='server_container'>
+        <h2 className='server_h2'>Servers</h2>
+        <ul>
+          {
+            servers?.length && servers.map((server) => (
+              <li className="servers_li">
+                <img className='server_image' src="https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"></img>
+                <br></br>
+                <NavLink to={`/server/${server.id}`} className="servers_nav">
+                  {server.name}
+                </NavLink>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    </>
+  )
+}

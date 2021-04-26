@@ -1,0 +1,35 @@
+.leftnav {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    float: left;
+    height: 1000px;
+    /* position: -webkit-sticky;
+    position: sticky;
+    top: 0; */
+    padding: 10px;
+}
+.leftnavdiv {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.leftnavdiv a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+
+.topnav {
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+.topnavdiv a{
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
