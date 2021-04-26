@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
+// npm i socket,io-client and then import
 import io from "socket.io-client";
 
-let endPoint = "http://localhost:5000";
-let socket = io.connect(`${endPoint}`);
+/*  define where ours sockets will be sent to
+    since we are running our backend on 5000 use the same one so we don't
+    have to run 2 different ones
+*/
+let server = "http://localhost:5000";
+let socket = io.connect(`${server}`);
 
 const Messages = () => {
-  const [messages, setMessages] = useState(["Hello And Welcome"]);
+// useState to set the messages and the initial message
+// later on we will load all previous messages through our db.Messages
+  const [messages, setMessages] = useState(["First message"]);
+  // the message from the input box
   const [message, setMessage] = useState("");
+
+// useEffect for any change in our messages list
 
   useEffect(() => {
     getMessages();
