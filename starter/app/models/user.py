@@ -3,6 +3,23 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
+
+#---------------Joint Table (many to many connection)---------------- 
+# when creating a joint table it is highly recommended to go about it by creating the table
+# like this rather than with a class like any other normal table
+server_users = db.Table(
+  'server_users',
+  db.Column(
+    "user_id", db.Integer, db.ForeignKey('users.id'), nullable=False
+  ),
+  db.Column(
+    "server_id", db.Integer, db.ForeignKey('servers.id'), nullable=False
+  )
+)
+
+
+# -------------------- User Class Table --------------------------------
+# the MANY TO ONE of verything else on the table
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
@@ -12,13 +29,15 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(255), nullable = False)
   profile_picture = db.Column(db.String(255))
   created_at = db.Column(db.Date)
+  
   #one to many relationship
-  servers = db.relationship('Server', back_populates='users')
+  server_admin = db.relationship('Server', back_populates='admin')
   messages = db.relationship('Message', back_populates='users')
-  #one to one relationship
-  server_users = db.relationship('ServerUser', backref='users', uselist=False)
-  private_messages = db.relationship('PrivateMessage', backref='users', uselist=False)
-
+  
+  # the relationship for the joints table
+  servers = db.relationship('Server', secondary=server_users, back_populates='users', lazy='dynamic')
+  
+  
   @property
   def password(self):
     return self.hashed_password
@@ -39,3 +58,21 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "email": self.email
     }
+
+
+#------------------------------Servers Table ----------------------------------
+
+class Server(db.Model):
+    __tablename__ = 'servers'
+
+    id = db.Column(db.Integer, primary_key= True)
+    admin_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable= False)
+    name = db.Column(db.String(255), nullable= False, unique = True)
+    image = db.Column(db.String(255))
+    public = db.Column(db.Boolean, default=True)
+    created_at = db.Column(db.Date)
+
+    # relations
+    channels = db.relationship('Channel', back_populates='servers')
+    admin = db.relationship('User', back_populates='server_admin')
+    users= db.relationship('User', secondary=server_users, back_populates='servers', lazy='dynamic')

@@ -1,6 +1,6 @@
 from .db import db
 
-
+# the ONE that belongs to the MANY of User and Channel
 class Message(db.Model):
   __tablename__ = 'messages'
 
@@ -10,3 +10,6 @@ class Message(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
   channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'), nullable = False)
   created_at = db.Column(db.DateTime)
+
+  users = db.relationship('User', back_populates='messages')
+  channels = db.relationship('Channel', back_populates='messages')
