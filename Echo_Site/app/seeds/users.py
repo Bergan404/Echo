@@ -7,12 +7,17 @@ from datetime import datetime
 
 def seed_users():
     demo = User(username='Demo', email='demo@aa.io',
-                hashed_password='password')
+                hashed_password='password', profile_picture='',
+                created_at=datetime.now())
 
-    bergan = User(username='Bergan', email='bergan@aa.io', password='password')
-    mike = User(username='Mike', email='mike@aa.io', password='password')
-    chris = User(username='Chris', email='chris@aa.io', password='password')
-    jiaro = User(username='Jiaro', email='jiaro@aa.io', password='password')
+    bergan = User(username='Bergan', email='bergan@aa.io', password='password', profile_picture='',
+                  created_at=datetime.now())
+    mike = User(username='Mike', email='mike@aa.io', password='password', profile_picture='',
+                created_at=datetime.now())
+    chris = User(username='Chris', email='chris@aa.io', password='password', profile_picture='',
+                created_at=datetime.now())
+    jiaro = User(username='Jiaro', email='jiaro@aa.io', password='password', profile_picture='',
+                created_at=datetime.now())
 
     db.session.add(demo)
     db.session.add(bergan)
