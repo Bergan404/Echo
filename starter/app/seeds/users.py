@@ -16,7 +16,7 @@ def seed_users():
                 created_at=datetime.now())
     chris = User(username='Chris', email='chris@aa.io', password='password', profile_picture='',
                 created_at=datetime.now())
-    jiaro = User(username='Jiaro', email='jiaro@aa.io', password='password', profile_picture='',
+    jairo = User(username='Jairo', email='jairo@aa.io', password='password', profile_picture='',
                 created_at=datetime.now())
 
     batman = User(username='Batman', email='batmgan@gmail.com',
@@ -24,6 +24,10 @@ def seed_users():
 
     db.session.add(demo)
     db.session.add(batman)
+    db.session.add(bergan)
+    db.session.add(mike)
+    db.session.add(chris)
+    db.session.add(jairo)
     db.session.commit()
 
 
