@@ -1,16 +1,24 @@
-.users_servers {
+.outer_container {
+    display: flex;
+}
 
+.users_servers {
+    width: 100%;
+    margin: 20px;
+}
+.banner {
+    width: 100%;
 }
 .users_container a{
     text-decoration: none;
     color: black;
 }
 .user_h2 {
+    margin-top: 20px;
     background-color: gray;
     width: 300px;
     text-align: center;
-    margin-right: auto;
-    margin-left: auto;
+
 }
 .users_li {
     margin-top: 20px;
@@ -39,8 +47,6 @@
     background-color: gray;
     width: 300px;
     text-align: center;
-    margin-right: auto;
-    margin-left: auto;
 }
 .servers_li {
     margin-top: 20px;

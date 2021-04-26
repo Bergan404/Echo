@@ -3,10 +3,10 @@
     flex-direction: column;
     background-color: black;
     float: left;
-    height: 1000px;
-    /* position: -webkit-sticky;
+    height: 100vh;
+    position: -webkit-sticky;
     position: sticky;
-    top: 0; */
+    top: 0;
     padding: 10px;
 }
 .leftnavdiv {
