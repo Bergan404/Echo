@@ -44,9 +44,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <Route path="/" exact={true}>
           <Home />
-        </ProtectedRoute>
+        </Route>
         <Messages path="/messages" />
       </Switch>
     </BrowserRouter>
