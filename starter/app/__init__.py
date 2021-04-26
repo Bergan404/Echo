@@ -7,7 +7,12 @@ from flask_login import LoginManager
 # flask socket
 from flask_socketio import SocketIO, send
 
+<<<<<<< HEAD
 from .models import db, User
+=======
+from .models import db, User, Server, Channel
+from .models import ServerUser, Message, PrivateMessage
+>>>>>>> master
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 
