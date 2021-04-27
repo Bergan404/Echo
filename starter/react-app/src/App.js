@@ -11,7 +11,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Messages from "./components/Messages/Messages";
 import Home from './components/Home'
-
+import Server from './components/Server'
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()
@@ -44,10 +44,13 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <Route path="/" exact={true}>
           <Home />
-        </ProtectedRoute>
+        </Route>
         <Messages path="/messages" />
+        <Route path="/server/:serverId" exact={true}>
+          <Server />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
