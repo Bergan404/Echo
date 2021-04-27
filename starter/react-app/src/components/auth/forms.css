@@ -64,3 +64,38 @@
     cursor: pointer;
     background-color: var(--darkred);
 }
+
+
+.server_form {
+    padding: 10px;
+}
+.server_div {
+    width: 100%;
+}
+.server_div label {
+    color: var(--lightgray);
+    margin-right: 10px;
+}
+.server_input {
+    font-size: 15px;
+    margin: 5px 0 5px 0;
+    padding: 5px;
+    border-radius: 10px;
+}
+.create {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.server-button {
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--red);
+    color: var(--lightgray);
+}
+.server-button:hover {
+    cursor: pointer;
+    background-color: var(--darkred);
+}

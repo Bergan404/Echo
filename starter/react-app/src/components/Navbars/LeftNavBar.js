@@ -26,7 +26,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     borderRadius: "10px",
     padding: "20px",
-    backgroundColor: "white",
+    backgroundColor: "var(--darkgreen)",
     border: "none",
   },
 };
@@ -35,6 +35,8 @@ Modal.setAppElement("#root");
 
 const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
+  const user_servers = useSelector(state => state.servers)
+  console.log(user_servers)
   const [modalIsOpenLogin, setIsOpenLogin] = useState(false);
 
   function openModalServer() {
@@ -50,6 +52,20 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
     setIsOpenLogin(false);
   }
 
+  function usersServers(){
+    const ourServer = [];
+    const values = Object.values(user_servers);
+    for (let obj in values) {
+      if (values[obj].admin_id == user.id) {
+        ourServer.push(values[obj])
+      }
+    }
+    return ourServer;
+  }
+  const newArray = usersServers()
+  console.log(newArray)
+  const newArr = Object.values(newArray)
+  console.log(newArr)
 
   return (
     <nav className='leftnav'>
@@ -60,12 +76,20 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
       </div>
 
       <div className='leftnavdiv'>
-        {/* <NavLink to="/users" exact={true} activeClassName="active">
-          <i class="fas fa-plus-circle"></i>
-        </NavLink> */}
         {
           user ?
           <>
+          {
+            newArr.map((server) => {
+              <div className="servers_li">
+                <NavLink to={`/server/${server.id}`} className="servers_nav">
+                  <img className='server_image' src={server.image}></img>
+                  {/* <br></br> */}
+                  {/* {server.name} */}
+                </NavLink>
+              </div>
+            })
+          }
           <div className='topnavdiv'>
             <button
                 className="ServerModalSubmit"

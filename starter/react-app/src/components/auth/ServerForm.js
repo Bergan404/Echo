@@ -36,13 +36,13 @@ const ServerForm = () => {
     }
 
     return (
-        <form onSubmit={onServerCreation}>
+        <form onSubmit={onServerCreation} className='server_form'>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='server_div'>
         <label htmlFor="name">Name</label>
         <input
           name="name"
@@ -50,9 +50,10 @@ const ServerForm = () => {
           placeholder="Name"
           value={name}
           onChange={updateName}
+          className='server_input'
         />
       </div>
-      <div>
+      <div className='server_div'>
         <label htmlFor="image">Image</label>
         <input
           name="image"
@@ -60,18 +61,22 @@ const ServerForm = () => {
           placeholder="Image"
           value={image}
           onChange={updateImage}
+          className='server_input'
         />
       </div>
-      <div>
+      <div className='server_div'>
         <label htmlFor="ispublic">Public</label>
         <input
           name="ispublic"
           type="checkbox"
           value={ispublic}
           onChange={updatePublic}
+          className='server_input'
         />
       </div>
-      <button type="submit">Create Server</button>
+      <div className="create">
+        <button className="server-button" type="submit">Create Server</button>
+      </div>
     </form>
     )
 }
