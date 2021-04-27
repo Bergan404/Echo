@@ -1,0 +1,66 @@
+.leftnav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--red);
+    float: left;
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+.leftnavdiv {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leftnavdiv a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+.echo_logo {
+    width: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.topnav {
+    background-color: var(--red);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: var(--lightgray);
+}
+.navbarContainer {
+    display: flex;
+}
+.topnavdiv {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.LoginModalSubmit {
+    padding: 7px;
+    background-color: var(--greenblue);
+    color: var(--lightgray);
+    border: none;
+    border-radius: 24px;
+}
+.SignUpModalSubmit {
+    padding: 7px;
+    background-color: var(--greenblue);
+    color: var(--lightgray);
+    border: none;
+    border-radius: 24px;
+}
+.LogoutButton {
+    padding: 7px;
+    background-color: var(--greenblue);
+    color: var(--lightgray);
+    border: none;
+    border-radius: 24px;
+}
