@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as sessionActions from "../../store/session";
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { findAllServers } from '../../store/server'
@@ -12,8 +13,10 @@ export default function Home() {
   const dispatch = useDispatch();
   const servers = useSelector(state => state.servers)
   const [users, setUsers] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     await dispatch(findAllServers())
   }, [dispatch])
 
@@ -29,9 +32,11 @@ export default function Home() {
   const userComponents = users.map((user) => {
     return (
       <li key={user.id} className="users_li">
-        <img className='user_image' src="https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"></img>
-        <br></br>
-        <NavLink className="users_nav" to={`/users/${user.id}`}>{user.username}</NavLink>
+        <NavLink className="users_nav" to={`/users/${user.id}`}>
+          <img className='user_image' src="https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"></img>
+          <br></br>
+          {user.username}
+          </NavLink>
       </li>
     );
   });

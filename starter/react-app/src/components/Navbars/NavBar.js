@@ -67,20 +67,16 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
   return (
     <nav className='topnav'>
+      <div className='navbarLeft'>
+          <h2>Creators</h2>
+      </div>
+      <div className='navbarCenter'>
+        <h2>Echo</h2>
+      </div>
       <div className="navbarContainer">
         {
           user ? " ":
           <>
-            {/* <div className='topnavdiv'>
-              <NavLink to="/login" exact={true} activeClassName="active">
-                    Login
-              </NavLink>
-            </div>
-            <div className='topnavdiv'>
-              <NavLink to="/sign-up" exact={true} activeClassName="active">
-                    Sign Up
-              </NavLink>
-            </div> */}
             <div className='topnavdiv'>
                 <button
                     className="LoginModalSubmit"

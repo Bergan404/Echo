@@ -3,3 +3,12 @@
     margin: 0;
     padding: 0;
 }
+
+/* Color Palette */
+:root {
+	--darkred: #501f3a;
+    --red: #cb2d6f;
+    --lightgray: #cccccc;
+    --greenblue: #14a098;
+    --darkgreen: #0f292f;
+}
