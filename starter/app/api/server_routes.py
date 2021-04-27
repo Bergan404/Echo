@@ -14,34 +14,36 @@ def server_channels(server_id):
     channels = Channel.query.filter(Channel.server_id == server_id).all()
     return {"channels": [channel.to_dict() for channel in channels]}
 
-# @server_routes.route('/<server_id>/users')
-# def server_channels(server_id):
-#     users = User.query.filter(User.server_id == server_id).all()
-#     return {"channels": [channel.to_dict() for channel in channels]}
-
 @server_routes.route('/<server_id>/<channel_id>/messages')
 def server_channels_messages(server_id, channel_id):
+    # do a query through the messages looking for the messages that are in the channel_id and order
+    # them from oldest to newest
+    data = db.session.query(Message).filter(Message.channel_id == channel_id).order_by(
+        Message.created_at.asc()
+    )
+    # Method 2
+    # data = db.session.query(Message).join(User)
+    # channel_messages = [message for message in messages if message['channel_id'] == int(channel_id)]
 
-    # messages = db.session.query(Message).filter(Message.channel_id == channel_id).order_by(
-    #     Message.created_at.desc()
-    # )
-    # messages = db.session.query(User).join(subq, User.id == subq.c.user_id )
-    messages = db.session.query(Message).join(User)
-    # for message in messages.all():
-    #     print(message, '****************************')
-    # messages = Message.query.join(User, Message.user_id == User.id).add_columns(User.username)
-
-    message = [message.to_dict() for message in messages]
-    print(message)
-    for user in message:
+    # sets up a list with dictionaries inside for all messages
+    messages = [message.to_dict() for message in data]
+    # do list comprehension to make sure we only return the messages with relation to the channel_id being passed in
+    channel_messages = [message for message in messages]
+    
+    # Loop through the message dictionaries and for each one grab the user that created the message
+    # then add a key-value to that specific message including the users name and picture
+    for user in channel_messages:
+        # Grab the user from the database with a query
         current_user= User.query.filter(User.id == user['user_id']).first()
+        # turn it into an object
         user_object = current_user.to_dict()
+        # add the key-value to the message dictionary
         user['username']= user_object['username']
         try:
             user['profile_picture']= user_object['profile_picture']
         except:
             pass
-    return {"message": message}
+    return {"message": channel_messages}
 
 
 # do query on opening private messages
