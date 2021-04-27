@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { findAllServers } from '../store/server'
+import { findAllServers } from '../store/servers'
 
 
 export default function Home() {
