@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import User, db, Server, Channel, Message
+from app.forms import ServerForm
 
 server_routes = Blueprint('server', __name__)
 
@@ -29,7 +30,7 @@ def server_channels_messages(server_id, channel_id):
     messages = [message.to_dict() for message in data]
     # do list comprehension to make sure we only return the messages with relation to the channel_id being passed in
     channel_messages = [message for message in messages]
-    
+
     # Loop through the message dictionaries and for each one grab the user that created the message
     # then add a key-value to that specific message including the users name and picture
     for user in channel_messages:
@@ -47,3 +48,23 @@ def server_channels_messages(server_id, channel_id):
 
 
 # do query on opening private messages
+@server_routes.route('/create', methods=['POST'])
+def create_server():
+    form = ServerForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.public, "---------======-----------------")
+    if form.is_submitted():
+        server = Server(
+            admin_id=form.data['admin_id'],
+            name=form.data['name'],
+            image=form.data['image'],
+            public=form.data['public'],
+            created_at=form.data['created_at']
+        )
+        db.session.add(server)
+        db.session.commit()
+        return server.to_dict()
+        print(form)
+    print(dir(form))
+    print(form, '---------------------------------------')
+    return "did not go thru", 401

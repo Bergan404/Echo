@@ -14,6 +14,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+.leftnavdivlogo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .leftnavdiv a{
     list-style: none;
     text-decoration: none;
@@ -24,6 +30,42 @@
     width: 45px;
     margin-left: auto;
     margin-right: auto;
+}
+.leftnavdivlogo::after {
+    background: var(--darkred);
+    content: '';
+    display: inline-block;
+    height: 0.12em;
+    max-width: 15em;
+    width: 100%;
+	box-sizing: inherit;
+}
+.fa-plus-circle {
+    font-size: 25px;
+    color: var(--lightgray);
+    /* border: 1px solid black; */
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+}
+.fa-compass {
+    font-size: 25px;
+    color: var(--lightgray);
+    /* border: 1px solid black; */
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+}
+.fa-plus-circle:hover {
+    border-radius: 20px;
+    cursor: pointer;
+}
+.fa-compass:hover {
+    border-radius: 20px;
+}
+.ServerModalSubmit {
+    background: none;
+    border: none;
 }
 
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as sessionActions from "../../store/session";
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { findAllServers } from '../../store/server'
+import { findAllServers } from '../../store/servers'
 import LeftNavBar from '../../components/Navbars/LeftNavBar';
 // import UsersList from '../UsersList'
 
@@ -30,7 +30,7 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const userComponents = users?.map((user) => {
+  const userComponents = users?.slice(0, 10).map((user) => {
     return (
       <li key={user.id} className="users_li">
         <NavLink className="users_nav" to={`/users/${user.id}`}>
@@ -58,10 +58,12 @@ export default function Home() {
         </div>
 
         <div className='server_container'>
-          <h2 className='server_h2'>Servers</h2>
+          <h2 className='server_h2'><NavLink to="/servers" exact={true} activeClassName="active" className='user_a'>
+            Servers
+          </NavLink></h2>
           <ul>
             {
-              servers?.length && servers.map((server) => (
+              servers?.length && servers.slice(0, 10).map((server) => (
                 <li className="servers_li">
                   <img className='server_image' src="https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"></img>
                   <br></br>

@@ -12,6 +12,7 @@ import { authenticate } from "./store/session";
 import Messages from "./components/Messages/Messages";
 import Home from './components/HomePage/index'
 import Server from './components/Server'
+import ServerList from './components/ServerList'
 
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
           <Home />
         </Route>
         <Messages path="/messages" />
+        <Route path='/servers' exact={true}>
+          <ServerList />
+        </Route>
         <Route path="/server/:serverId" exact={true}>
           <Server />
         </Route>
