@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { findAllServers } from '../../store/server'
 import LeftNavBar from '../../components/Navbars/LeftNavBar';
+// import UsersList from '../UsersList'
 
 
 import './homepage.css'
@@ -29,7 +30,7 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
+  const userComponents = users?.map((user) => {
     return (
       <li key={user.id} className="users_li">
         <NavLink className="users_nav" to={`/users/${user.id}`}>
@@ -49,7 +50,7 @@ export default function Home() {
       <div className='users_servers'>
         <img className='banner' src='https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5'></img>
         <div className='users_container'>
-        <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active">
+        <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active" className='user_a'>
             Users
             {/* Currently brings to all users but we can fix that */}
           </NavLink></h2>

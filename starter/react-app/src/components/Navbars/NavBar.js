@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from "react-modal";
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 // import LoginFormModal from '../Modals/index'
 import LoginForm from '../auth/LoginForm'

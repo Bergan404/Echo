@@ -11,13 +11,16 @@
 }
 .users_container a{
     text-decoration: none;
-    color: black;
+}
+.user_a {
+    color: var(--darkgreen);
 }
 .user_h2 {
     margin-top: 20px;
-    background-color: gray;
+    background-color: var(--lightgray);
     width: 300px;
     text-align: center;
+    color: var(--darkgreen);
 
 }
 .users_li {
@@ -29,7 +32,7 @@
 }
 .users_nav {
     text-decoration: none;
-    color: black;
+    color: var(--lightgray);
     display: inline-block;
     text-align: center;
     width: 120px;
@@ -44,7 +47,8 @@
 
 }
 .server_h2 {
-    background-color: gray;
+    background-color: var(--lightgray);
+    color: var(--darkgreen);
     width: 300px;
     text-align: center;
 }
@@ -62,7 +66,7 @@
 }
 .servers_nav {
     text-decoration: none;
-    color: black;
+    color: var(--lightgray);
     display: inline-block;
     text-align: center;
     width: 120px;

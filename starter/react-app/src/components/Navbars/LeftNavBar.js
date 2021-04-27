@@ -8,7 +8,7 @@ const LeftNavBar = () => {
     <nav className='leftnav'>
       <div className='leftnavdiv'>
         <NavLink to="/" exact={true} activeClassName="active">
-          <img className='echo_logo' src='../images/echo_logo.png'></img>
+          <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
         </NavLink>
       </div>
       <div className='leftnavdiv'>

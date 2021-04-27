@@ -12,3 +12,8 @@
     --greenblue: #14a098;
     --darkgreen: #0f292f;
 }
+
+body {
+    background-color: var(--darkgreen);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
