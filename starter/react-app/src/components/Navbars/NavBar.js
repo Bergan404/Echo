@@ -28,7 +28,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     borderRadius: "10px",
     padding: "20px",
-    backgroundColor: "white",
+    backgroundColor: 'var(--darkgreen)',
     border: "none",
   },
 };
