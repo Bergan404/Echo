@@ -1,18 +1,18 @@
-const ALL_SERVERS = 'server/allServers';
+const GET_SERVER = 'server/GET_SERVER';
 
 
-const allServers = (servers) => ({
-  type: ALL_SERVERS,
-  payload: servers
+const getaServer = (server) => ({
+  type: GET_SERVER,
+  payload: server
 })
 
 //thunk
-export const findAllServers = () => async (dispatch) => {
-  const response = await fetch('/api/main/')
+export const getServer = (serverId) => async (dispatch) => {
+  const response = await fetch(`/api/server/${serverId}`)
   if (response.ok) {
-    const servers = await response.json();
-    console.log(servers);
-    return dispatch(allServers(servers));
+    const server = await response.json();
+    console.log(server);
+    return dispatch(getaServer(server));
   } else {
     console.log("repsonse not ok")
   }
@@ -25,9 +25,9 @@ export const findAllServers = () => async (dispatch) => {
 export default function serverReducer(state = { server: {} }, action) {
   console.log(action)
   switch (action.type) {
-    case ALL_SERVERS:
+    case GET_SERVER:
       console.log(action.payload)
-      return action.payload.servers;
+      return action.payload.server;
     default:
       return state;
   }

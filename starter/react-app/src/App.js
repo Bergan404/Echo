@@ -11,6 +11,8 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Messages from "./components/Messages/Messages";
 import Home from './components/HomePage/index'
+import Server from './components/Server'
+
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -48,6 +50,9 @@ function App() {
           <Home />
         </Route>
         <Messages path="/messages" />
+        <Route path="/server/:serverId" exact={true}>
+          <Server />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

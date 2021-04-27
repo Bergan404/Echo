@@ -1,8 +1,8 @@
-"""create all tables
+"""please_work
 
-Revision ID: c0a4b4192d11
+Revision ID: d2d649545aaf
 Revises: 
-Create Date: 2021-04-23 19:54:29.471679
+Create Date: 2021-04-26 17:30:58.115585
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c0a4b4192d11'
+revision = 'd2d649545aaf'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -59,17 +59,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('server_users',
-    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('server_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['server_id'], ['servers.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], )
     )
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('messages', sa.Text(), nullable=False),
-    sa.Column('reply', sa.Text(), nullable=False),
+    sa.Column('reply', sa.Text(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('channel_id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
