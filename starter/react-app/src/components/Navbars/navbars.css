@@ -78,6 +78,8 @@
 }
 .navbarContainer {
     display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .topnavdiv {
     margin-left: 10px;
@@ -105,4 +107,17 @@
     color: var(--lightgray);
     border: none;
     border-radius: 24px;
+}
+.topnavdiv_foruser {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.profile_picture {
+    width: 50px;
+    border-radius: 50px;
+    position: absolute;
+    right: 6.5em;
+    top: 10px;
 }

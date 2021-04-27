@@ -133,7 +133,8 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         }
         {
           user ?
-            <div className='topnavdiv'>
+            <div className='topnavdiv_foruser'>
+              <img src={user.image} className='profile_picture'></img>
               <LogoutButton />
             </div>: " "
         }
