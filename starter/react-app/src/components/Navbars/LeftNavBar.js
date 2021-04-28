@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from "react-modal";
-import ServerForm from '../auth/ServerForm'
+import ServerForm from '../auth/ServerForm';
+import { findAllServers } from '../../store/servers';
 
 import './navbars.css';
 
@@ -38,6 +39,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   const user_servers = useSelector(state => state.servers)
   console.log(user_servers)
   const [modalIsOpenLogin, setIsOpenLogin] = useState(false);
+  const dispatch = useDispatch()
 
   function openModalServer() {
     setIsOpenLogin(true);
@@ -51,6 +53,10 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   function closeModalServer() {
     setIsOpenLogin(false);
   }
+
+  useEffect(async () => {
+    await dispatch(findAllServers());
+  }, [dispatch])
 
   let newArray;
   if (user) {
@@ -84,6 +90,15 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
         {
           user ?
             <>
+              {
+                newArray?.map((server) => (
+                  <div className="servers_left">
+                    <NavLink to={`/server/${server.id}`} className="servers_left_nav">
+                      <img className='server_left_image' src={server.image ? server.image : 'https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj'}></img>
+                    </NavLink>
+                  </div>
+                ))
+              }
               <div className='topnavdiv'>
                 <button
                   className="ServerModalSubmit"
@@ -92,17 +107,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                   <i class="fas fa-plus-circle"></i>
                 </button>
               </div>
-              {
-                newArray?.map((server) => (
-                  <div className="servers_li">
-                    <NavLink to={`/server/${server.id}`} className="servers_nav">
-                      <img className='server_image' src={server.image ? server.image : 'https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj'}></img>
-                      <br></br>
-                      {server.name}
-                    </NavLink>
-                  </div>
-                ))
-              }
+
               <div>
                 <Modal
                   isOpen={modalIsOpenLogin}
