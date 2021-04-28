@@ -12,6 +12,7 @@ import './homepage.css'
 
 export default function Home() {
   const dispatch = useDispatch();
+
   const servers = useSelector(state => state.servers)
   const [users, setUsers] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,13 +33,13 @@ export default function Home() {
 
   const userComponents = users.slice(0, 10).map((user) => {
     return (
-      <li key={user.id} className="users_li">
+      <div key={user.id} className="users_li">
         <NavLink className="users_nav" to={`/users/${user.id}`}>
-          <img className='user_image' src="https://pbs.twimg.com/media/Eo2Y7g0VEAUBwG_.jpg"></img>
+          <img className='user_image' src={user.image ? user.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"}></img>
           <br></br>
-          {user.username}
+          <p>{user.username}</p>
         </NavLink>
-      </li>
+      </div>
     );
   });
 
@@ -54,26 +55,28 @@ export default function Home() {
             Users
             {/* Currently brings to all users but we can fix that */}
           </NavLink></h2>
-          {userComponents}
+          <div className="ten-servers">
+            {userComponents}
+          </div>
         </div>
 
         <div className='server_container'>
           <h2 className='server_h2'><NavLink to="/servers" exact={true} activeClassName="active" className='user_a'>
             Servers
           </NavLink></h2>
-          <ul>
+          <div className="ten-servers">
             {
               servers?.length && servers.slice(0, 10).map((server) => (
-                <li className="servers_li">
+                <div className="servers_li">
                   <NavLink to={`/server/${server.id}`} className="servers_nav">
                     <img className='server_image' src={server.image ? server.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"}></img>
                     <br></br>
-                    {server.name}
+                    <p>{server.name}</p>
                   </NavLink>
-                </li>
+                </div>
               ))
             }
-          </ul>
+          </div>
         </div>
       </div>
     </div>

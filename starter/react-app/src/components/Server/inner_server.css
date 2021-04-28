@@ -1,0 +1,4 @@
+.inner_server_container {
+    display: flex;
+    justify-content: space-around;
+}

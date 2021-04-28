@@ -74,7 +74,7 @@ const ServerForm = () => {
           type="file"
           accept="image/*"
           onChange={updateImage}
-          className='server_input'
+          className='server_input_image'
         />
       </div>
       <div className='server_div'>
@@ -84,7 +84,7 @@ const ServerForm = () => {
           type="checkbox"
           value={ispublic}
           onChange={updatePublic}
-          className='server_input'
+          className='server_input_checkbox'
         />
       </div>
       <div className="create">

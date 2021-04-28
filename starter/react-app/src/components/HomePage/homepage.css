@@ -31,6 +31,9 @@
     display: inline-block;
     text-align: center;
 }
+.users_li p {
+    overflow: hidden;
+}
 .users_nav {
     text-decoration: none;
     color: var(--lightgray);
@@ -43,9 +46,17 @@
     height: 100px;
     border-radius: 50px;
 }
+.all_users_h1 {
+    color: var(--lightgray);
+    padding: 20px;
+}
 
 .servers_container {
 
+}
+.ten-servers {
+    /* margin-top: 0; */
+    display: flex;
 }
 .server_h2 {
     background-color: var(--lightgray);

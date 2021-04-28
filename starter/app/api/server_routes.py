@@ -64,9 +64,11 @@ def server_channels_messages(server_id, channel_id):
 @server_routes.route('/create', methods=['POST'])
 def create_server():
     form = ServerForm()
+    # print(request.__dict__.items(), "------------------------------")
     if form.is_submitted():
         image=request.files["image"]
         image.filename = get_unique_filename(image.filename)
+        # if (image is not null):
         upload = upload_file_to_s3(image)
         url = upload["url"]
         server = Server(

@@ -9,6 +9,8 @@ import { delExistingServer } from '../../store/server_create'
 
 import ServerUsers from '../ServerUsers'
 
+import './inner_server.css'
+
 export default function Server() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,20 +29,25 @@ export default function Server() {
   }
 
   return (
-    <div className='outer_container'>
+    <div className='server_something_container'>
       <div className='left'>
         <LeftNavBar />
       </div>
-      <div>
-        <div>{server.name}</div>
-        <div>{server.admin_id}</div>
-        {
-          (server?.admin_id == user?.id) &&
-          <button type="submit" onClick={handleDelete}>Delete</button>
-        }
-        <Channels />
-
-        <ServerUsers />
+      <div className='inner_server_container'>
+        <div>
+          <div>{server.name}</div>
+          <div>#{server.admin_id}</div>
+          {
+            (server?.admin_id == user?.id) &&
+            <button type="submit" onClick={handleDelete}>Delete</button>
+          }
+        </div>
+        <div>
+          <Channels />
+        </div>
+        <div>
+          <ServerUsers />
+        </div>
       </div>
     </div>
 

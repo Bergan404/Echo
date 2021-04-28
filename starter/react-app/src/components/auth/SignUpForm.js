@@ -73,14 +73,15 @@ const SignUpForm = () => {
           className='singup_input'
         ></input>
       </div>
-      <div className='signup_div'>
-        {/* <label>Image</label> */}
+      <div className='signup_div_image'>
+        <label>Image</label>
         <input
           name="image"
           type="file"
+          placeholder="Select Image"
           accept="image/*"
           onChange={updateImage}
-          className='singup_input'
+          className='singup_input_image'
         ></input>
       </div>
       <div className='signup_div'>
