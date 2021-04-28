@@ -11,7 +11,6 @@ export const getChannels = (serverId) => async (dispatch) => {
   const response = await fetch(`/api/server/${serverId}/channels`)
   if (response.ok) {
     const channels = await response.json();
-    console.log(channels, '####################################');
     dispatch(getTheChannels(channels));
     return channels
   } else {
@@ -24,7 +23,6 @@ export const getChannels = (serverId) => async (dispatch) => {
 // const initialState = {};
 
 export default function channelsReducer(state = { channels: {} }, action) {
-  console.log(action)
   switch (action.type) {
     case GET_CHANNELS:
       console.log(action.payload)

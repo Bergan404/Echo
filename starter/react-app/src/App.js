@@ -9,10 +9,10 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
-import Messages from "./components/Messages/Messages";
 import Home from './components/HomePage/index'
 import Server from './components/Server'
 import ServerList from './components/ServerList'
+import PrivateMessages from './components/PrivateMessages'
 
 
 function App() {
@@ -50,12 +50,14 @@ function App() {
         <Route path="/" exact={true}>
           <Home />
         </Route>
-        <Messages path="/messages" />
         <Route path='/servers' exact={true}>
           <ServerList />
         </Route>
         <Route path="/server/:serverId" exact={true}>
           <Server />
+        </Route>
+        <Route path='/privatemessages' exact={true}>
+          <PrivateMessages />
         </Route>
       </Switch>
     </BrowserRouter>

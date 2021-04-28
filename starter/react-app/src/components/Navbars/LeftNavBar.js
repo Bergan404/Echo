@@ -70,6 +70,12 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   return (
     <nav className='leftnav'>
       <div className='leftnavdivlogo'>
+          <NavLink to='/privatemessages'>
+            <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
+            <span>Private Messages</span>
+          </NavLink>
+      </div>
+      <div className='leftnavdivlogo'>
         <NavLink to="/" exact={true} activeClassName="active">
           <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
         </NavLink>
@@ -80,7 +86,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
           user ?
           <>
           {
-            newArr.map((server) => {
+            newArr.map((server) => (
               <div className="servers_li">
                 <NavLink to={`/server/${server.id}`} className="servers_nav">
                   <img className='server_image' src={server.image}></img>
@@ -88,8 +94,8 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                   {/* {server.name} */}
                 </NavLink>
               </div>
-            })
-          }
+            ))
+            }
           <div className='topnavdiv'>
             <button
                 className="ServerModalSubmit"

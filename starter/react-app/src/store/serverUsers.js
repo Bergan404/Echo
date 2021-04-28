@@ -13,7 +13,6 @@ export const getServerUsers = (serverId) => async (dispatch) => {
     const serverUsers = await response.json();
     return dispatch(getTheServerUsers(serverUsers));
   } else {
-    console.log("repsonse not ok")
   }
   return null
 }
@@ -22,10 +21,8 @@ export const getServerUsers = (serverId) => async (dispatch) => {
 // const initialState = {};
 
 export default function ServerUsersReducer(state = { serverUsers: {} }, action) {
-  console.log(action)
   switch (action.type) {
     case GET_SERVER_USERS:
-      console.log(action.payload)
       return action.payload.serverUsers;
     default:
       return state;

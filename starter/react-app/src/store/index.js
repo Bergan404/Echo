@@ -8,6 +8,7 @@ import channels from './channels'
 import messages from './messages'
 import serverUsers from './serverUsers'
 import create from './server_create'
+import privateMessages from './privateMessages'
 
 
 
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     channels,
     messages,
     serverUsers,
-    create
+    create,
+    privateMessages
 
 });
 

@@ -64,7 +64,6 @@ def server_channels_messages(server_id, channel_id):
 def create_server():
     form = ServerForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.public, "---------======-----------------")
     if form.is_submitted():
         server = Server(
             admin_id=form.data['admin_id'],
@@ -76,7 +75,4 @@ def create_server():
         db.session.add(server)
         db.session.commit()
         return server.to_dict()
-        print(form)
-    print(dir(form))
-    print(form, '---------------------------------------')
     return "did not go thru", 401
