@@ -25,17 +25,20 @@ export const delExistingServer = (serverId) => async (dispatch) => {
 
 
 export const serverCreate = (admin_id, name, image, isPublic) => async (dispatch) => {
+    const formData = new FormData();
+    formData.append('admin_id', admin_id);
+    formData.append('name', name);
+    if (image) {
+        formData.append('image', image);
+    }
+    formData.append('isPublic', isPublic);
+
     const response = await fetch("/api/server/create", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            admin_id,
-            name,
-            image,
-            'public': isPublic,
-        }),
+        // headers: {
+        //     "Content-Type": "multipart/form-data",
+        // },
+        body: formData
     });
     const data = await response.json();
     dispatch(createSever(data));
