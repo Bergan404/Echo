@@ -52,23 +52,24 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
     setIsOpenLogin(false);
   }
 
-
-  function usersServers() {
-    const ourServer = [];
-    const values = Object.values(user_servers);
-    for (let obj in values) {
-      if (values[obj].admin_id == user.id) {
-        ourServer.push(values[obj])
+  let newArray;
+  if (user) {
+    function usersServers() {
+      const ourServer = [];
+      const values = Object.values(user_servers);
+      for (let obj in values) {
+        if (values[obj].admin_id == user.id) {
+          ourServer.push(values[obj])
+        }
       }
+      console.log(ourServer);
+      return ourServer;
+
+
     }
-    console.log(ourServer);
-    return ourServer;
-
-
+    newArray = usersServers();
+    console.log(newArray[0]);
   }
-  const newArray = usersServers() ? usersServers() : []
-  console.log(newArray[0])
-
 
 
   return (
