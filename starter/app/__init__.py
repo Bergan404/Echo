@@ -5,9 +5,9 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 # flask socket
-from flask_socketio import SocketIO, send
-
-from .models import db, User
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from datetime import datetime
+from .models import db, User, Message
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.main import main_routes
@@ -16,6 +16,10 @@ from .api.server_routes import server_routes
 from .seeds import seed_commands
 
 from .config import Config
+import logging
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -23,9 +27,27 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Socket handler for receiving a message
 @socketio.on('message')
-def handleMessage(msg):
-    print("Message: " + msg)
-    send(msg, broadcast=True)
+def handleMessage(data):
+    print('this^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+    time = datetime.now()
+    message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
+    db.session.add(message)
+    db.session.commit()
+    data['created_at'] = str(time)
+    print(data)
+    emit('room', data, to=data['room'])
+    #send(data, room=data['room'])
+
+
+@socketio.on('join_room')
+def handleJoinRoom(roomId):
+    print(roomId, '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+    join_room(roomId)
+    return None
+
+@socketio.on('leave_room')
+def handleLeaveRoom(roomId):
+    leave_room(roomId)
     return None
 
 
