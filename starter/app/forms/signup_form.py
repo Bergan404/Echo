@@ -16,5 +16,5 @@ class SignUpForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
-    profile_picture = StringField('profile_picture')
+    profile_picture = StringField('image')
     created_at = DateField('created_at', default=datetime.now())

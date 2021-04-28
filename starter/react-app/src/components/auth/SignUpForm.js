@@ -10,12 +10,15 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState(null)
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image);
+
     if (password === repeatPassword) {
       await dispatch(signUp(username, email, password, image));
     }
@@ -30,7 +33,8 @@ const SignUpForm = () => {
   };
 
   const updateImage = (e) => {
-    setImage(e.target.value);
+    const file = e.target.files[0];
+    setImage(file)
   };
 
   const updatePassword = (e) => {
@@ -72,11 +76,10 @@ const SignUpForm = () => {
       <div className='signup_div'>
         {/* <label>Image</label> */}
         <input
-          type="text"
           name="image"
-          placeholder="Image"
+          type="file"
+          accept="image/*"
           onChange={updateImage}
-          value={image}
           className='singup_input'
         ></input>
       </div>
