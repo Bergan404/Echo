@@ -25,12 +25,10 @@ export const serverCreate = (admin_id, name, image, isPublic) => async (dispatch
 }
 
 export default function createReducer(state = { create: {} }, action) {
-    console.log(action)
     switch (action.type) {
-      case CREATE_SERVER:
-        console.log(action.payload)
-        return action.payload;
-      default:
-        return state;
+        case CREATE_SERVER:
+            return action.payload;
+        default:
+            return state;
     }
-  }
+}

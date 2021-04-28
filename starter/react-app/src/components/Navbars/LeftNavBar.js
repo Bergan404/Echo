@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Modal from "react-modal";
@@ -52,20 +52,25 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
     setIsOpenLogin(false);
   }
 
-  function usersServers(){
-    const ourServer = [];
-    const values = Object.values(user_servers);
-    for (let obj in values) {
-      if (values[obj].admin_id == user.id) {
-        ourServer.push(values[obj])
+  let newArray;
+  if (user) {
+    function usersServers() {
+      const ourServer = [];
+      const values = Object.values(user_servers);
+      for (let obj in values) {
+        if (values[obj].admin_id == user.id) {
+          ourServer.push(values[obj])
+        }
       }
+      console.log(ourServer);
+      return ourServer;
+
+
     }
-    return ourServer;
+    newArray = usersServers();
+    console.log(newArray[0]);
   }
-  const newArray = usersServers()
-  console.log(newArray)
-  const newArr = Object.values(newArray)
-  console.log(newArr)
+
 
   return (
     <nav className='leftnav'>
@@ -78,43 +83,43 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
       <div className='leftnavdiv'>
         {
           user ?
-          <>
-          {
-            newArr.map((server) => {
-              <div className="servers_li">
-                <NavLink to={`/server/${server.id}`} className="servers_nav">
-                  <img className='server_image' src={server.image}></img>
-                  {/* <br></br> */}
-                  {/* {server.name} */}
-                </NavLink>
+            <>
+              <div className='topnavdiv'>
+                <button
+                  className="ServerModalSubmit"
+                  onClick={openModalServer}
+                >
+                  <i class="fas fa-plus-circle"></i>
+                </button>
               </div>
-            })
-          }
-          <div className='topnavdiv'>
-            <button
-                className="ServerModalSubmit"
-                onClick={openModalServer}
-            >
-              <i class="fas fa-plus-circle"></i>
-            </button>
-          </div>
-          <div>
-            <Modal
-                isOpen={modalIsOpenLogin}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModalServer}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                <ServerForm
+              {
+                newArray?.map((server) => (
+                  <div className="servers_li">
+                    <NavLink to={`/server/${server.id}`} className="servers_nav">
+                      <img className='server_image' src={server.image ? server.image : 'https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj'}></img>
+                      <br></br>
+                      {server.name}
+                    </NavLink>
+                  </div>
+                ))
+              }
+              <div>
+                <Modal
+                  isOpen={modalIsOpenLogin}
+                  onAfterOpen={afterOpenModal}
+                  onRequestClose={closeModalServer}
+                  style={customStyles}
+                  contentLabel="Example Modal"
+                >
+                  <ServerForm
                     setIsOpenLogin={setIsOpenLogin}
                     authenticated={authenticated}
                     setAuthenticated={setAuthenticated}
                     closeModalLogin={closeModalServer}
-                />
-            </Modal>
-          </div>
-          </>: " "
+                  />
+                </Modal>
+              </div>
+            </> : " "
         }
       </div>
 
