@@ -34,19 +34,26 @@ export default function Server() {
         <LeftNavBar />
       </div>
       <div className='inner_server_container'>
-        <div>
-          <div>{server.name}</div>
-          <div>#{server.admin_id}</div>
-          {
-            (server?.admin_id == user?.id) &&
-            <button type="submit" onClick={handleDelete}>Delete</button>
-          }
+        <div className="server-left">
+          <div className='inner_server_left'>
+            <div>{server.name}</div>
+            <div>#{server.admin_id}</div>
+            {
+              (server?.admin_id == user?.id) &&
+              <button type="submit" onClick={handleDelete}>Delete</button>
+            }
+          </div>
         </div>
-        <div>
-          <Channels />
+        <div className="server_middle">
+          <div className="server-middle">
+            <Channels />
+          </div>
         </div>
-        <div>
-          <ServerUsers />
+        <div className='server_right'>
+          <div className="server-right">
+            <h1>Users</h1>
+            <ServerUsers />
+          </div>
         </div>
       </div>
     </div>
