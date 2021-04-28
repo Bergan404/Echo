@@ -1,0 +1,123 @@
+.leftnav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--red);
+    float: left;
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+.leftnavdiv {
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leftnavdivlogo {
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+.leftnavdiv a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+.echo_logo {
+    width: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leftnavdivlogo::after {
+    background: var(--darkred);
+    content: '';
+    display: inline-block;
+    height: 0.12em;
+    max-width: 15em;
+    width: 100%;
+	box-sizing: inherit;
+}
+.fa-plus-circle {
+    font-size: 25px;
+    color: var(--lightgray);
+    /* border: 1px solid black; */
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+}
+.fa-compass {
+    font-size: 25px;
+    color: var(--lightgray);
+    /* border: 1px solid black; */
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+}
+.fa-plus-circle:hover {
+    border-radius: 20px;
+    cursor: pointer;
+}
+.fa-compass:hover {
+    border-radius: 20px;
+}
+.ServerModalSubmit {
+    background: none;
+    border: none;
+}
+
+
+.topnav {
+    background-color: var(--red);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: var(--lightgray);
+}
+.navbarContainer {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.topnavdiv {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.LoginModalSubmit {
+    padding: 7px;
+    background-color: var(--greenblue);
+    color: var(--lightgray);
+    border: none;
+    border-radius: 24px;
+}
+.SignUpModalSubmit {
+    padding: 7px;
+    background-color: var(--greenblue);
+    color: var(--lightgray);
+    border: none;
+    border-radius: 24px;
+}
+.LogoutButton {
+    padding: 7px;
+    background-color: var(--greenblue);
+    color: var(--lightgray);
+    border: none;
+    border-radius: 24px;
+}
+.topnavdiv_foruser {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.profile_picture {
+    width: 50px;
+    border-radius: 50px;
+    position: absolute;
+    right: 6.5em;
+    top: 10px;
+}

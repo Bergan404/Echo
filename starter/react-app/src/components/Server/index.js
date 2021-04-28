@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getServer } from '../../store/server'
 import {useParams} from 'react-router-dom'
 import Channels from '../Channels'
+import LeftNavBar from '../../components/Navbars/LeftNavBar';
 
 import ServerUsers from '../ServerUsers'
 
@@ -16,11 +17,18 @@ export default function Server() {
   }, [dispatch])
 
   return (
-    <>
+    <div className='outer_container'>
+      <div className='left'>
+        <LeftNavBar />
+      </div>
+      <div>
         <div>{server.name}</div>
         <div>{server.admin_id}</div>
         <Channels />
+
         <ServerUsers />
-    </>
+      </div>
+    </div>
+
   )
 }

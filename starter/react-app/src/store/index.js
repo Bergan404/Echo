@@ -4,8 +4,11 @@ import session from './session'
 import servers from './servers'
 import server from './server'
 import channels from './channels'
+
 import messages from './messages'
 import serverUsers from './serverUsers'
+import create from './server_create'
+
 
 
 const rootReducer = combineReducers({
@@ -14,7 +17,9 @@ const rootReducer = combineReducers({
     server,
     channels,
     messages,
-    serverUsers
+    serverUsers,
+    create
+
 });
 
 let enhancer;
