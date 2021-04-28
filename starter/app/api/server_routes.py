@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
-from app.models import User, db, Server, Channel, Message
+
+from app.models import User, db, Server, Channel, Message, server_users
 from app.forms import ServerForm
+
 
 server_routes = Blueprint('server', __name__)
 
@@ -14,6 +16,15 @@ def server(server_id):
 def server_channels(server_id):
     channels = Channel.query.filter(Channel.server_id == server_id).all()
     return {"channels": [channel.to_dict() for channel in channels]}
+
+@server_routes.route('/<server_id>/users')
+def server_get_users(server_id):
+    users = db.session.query(server_users).filter(server_id == server_users.c.server_id).all()
+    user_list = []
+    for user in users:
+        add_user = User.query.filter(User.id == user[0]).first()
+        user_list.append(add_user)
+    return {"serverUsers": [user.to_dict() for user in user_list]}
 
 @server_routes.route('/<server_id>/<channel_id>/messages')
 def server_channels_messages(server_id, channel_id):
@@ -44,10 +55,11 @@ def server_channels_messages(server_id, channel_id):
             user['profile_picture']= user_object['profile_picture']
         except:
             pass
-    return {"message": channel_messages}
+    return {"messages": channel_messages}
 
 
 # do query on opening private messages
+
 @server_routes.route('/create', methods=['POST'])
 def create_server():
     form = ServerForm()

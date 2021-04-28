@@ -6,6 +6,8 @@ import {useParams} from 'react-router-dom'
 import Channels from '../Channels'
 import LeftNavBar from '../../components/Navbars/LeftNavBar';
 
+import ServerUsers from '../ServerUsers'
+
 export default function Server() {
   const dispatch = useDispatch();
   const server = useSelector(state => state.server)
@@ -23,7 +25,10 @@ export default function Server() {
         <div>{server.name}</div>
         <div>{server.admin_id}</div>
         <Channels />
+
+        <ServerUsers />
       </div>
     </div>
+
   )
 }

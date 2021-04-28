@@ -11,7 +11,9 @@ export const getChannels = (serverId) => async (dispatch) => {
   const response = await fetch(`/api/server/${serverId}/channels`)
   if (response.ok) {
     const channels = await response.json();
-    return dispatch(getTheChannels(channels));
+    console.log(channels, '####################################');
+    dispatch(getTheChannels(channels));
+    return channels
   } else {
     console.log("repsonse not ok")
   }
