@@ -11,9 +11,9 @@ def seed_users_servers():
 
     # Second the Users
     demo = User(username='Demo', email='demo@aa.io',
-                hashed_password='password', profile_picture='',
+                password='password', profile_picture='',
                 created_at=datetime.now())
-    
+
     # Third append them and commit
     demo.servers.append(demo_server)
     db.session.add(demo)

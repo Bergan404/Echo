@@ -56,7 +56,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
     const ourServer = [];
     const values = Object.values(user_servers);
     for (let obj in values) {
-      if (values[obj].admin_id == user.id) {
+      if (user !==null && values[obj].admin_id == user.id) {
         ourServer.push(values[obj])
       }
     }

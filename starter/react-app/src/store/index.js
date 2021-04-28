@@ -9,6 +9,7 @@ import messages from './messages'
 import serverUsers from './serverUsers'
 import create from './server_create'
 import privateMessages from './privateMessages'
+import privateMessageRecipients from './privateMessageRecipients'
 
 
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     messages,
     serverUsers,
     create,
-    privateMessages
+    privateMessages,
+    privateMessageRecipients
 
 });
 

@@ -6,12 +6,14 @@ const getThePrivateMessages = (privateMessages) => ({
   payload: privateMessages
 })
 
+
 //thunk
-export const getPrivateMessages = (userId) => async (dispatch) => {
-  const response = await fetch(`/api/private_messages/${userId}`)
+export const getPrivateMessages = (userId, reciever_id) => async (dispatch) => {
+  const response = await fetch(`/api/private_messages/${userId}/${reciever_id}`)
   if (response.ok) {
     const privateMessages = await response.json();
-    return dispatch(getThePrivateMessages(privateMessages));
+    dispatch(getThePrivateMessages(privateMessages));
+    return privateMessages
   } else {
   }
   return null
