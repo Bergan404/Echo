@@ -34,7 +34,7 @@ function User({ user }) {
     const ourServer = [];
     const values = Object.values(user_servers);
     for (let obj in values) {
-      if (values[obj].admin_id == loggedInUser.id) {
+      if (values[obj]?.admin_id == loggedInUser?.id) {
         ourServer.push(values[obj])
       }
     }
@@ -45,7 +45,7 @@ function User({ user }) {
   newArray = usersServers();
 
   const [user_id, setUser_id] = useState(user.id);
-  const [server_id, setServer_id] = useState(newArray[0].id);
+  const [server_id, setServer_id] = useState(newArray[0]?.id);
   console.log(server_id);
 
   return (
