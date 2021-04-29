@@ -92,3 +92,15 @@ def delete_server():
     print(serverId)
     db.session.delete(server)
     db.session.commit()
+
+@server_routes.route('/adduser', methods=["POST"])
+def addServerUser():
+
+    data = request.get_json()
+    user = User.query.get(data["user_id"])
+    server = Server.query.get(data["server_id"])
+    user.servers.append(server)
+    db.session.commit()
+    print(user, '-----------------------------------')
+    print(server, '-----------------------------------')
+    return {'hello': "hello"}

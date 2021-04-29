@@ -104,12 +104,15 @@
     display: flex;
     margin-top: auto;
     margin-bottom: auto;
+
 }
 .topnavdiv {
     /* margin-left: 10px;
     margin-right: 10px; */
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .topnavdivmessage {
     /* margin-left: 10px;
@@ -130,6 +133,17 @@
     color: var(--lightgray);
     border: none;
     border-radius: 24px;
+}
+.UserModalSubmit {
+    background: none;
+    border: none;
+    color: var(--lightgray);
+    font-size: 15px;
+    width: 120px;
+}
+.profile_picture:hover {
+    border-radius: 20px;
+    cursor: pointer;
 }
 .LogoutButton {
     padding: 7px;

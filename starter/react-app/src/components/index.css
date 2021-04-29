@@ -1,0 +1,73 @@
+.profile {
+    color: var(--lightgray);
+}
+.profile_input {
+    margin-top: 10px;
+}
+.profile_delete {
+    border: none;
+    background-color: var(--red);
+    color: var(--lightgray);
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 24px;
+    margin-top: 10px;
+}
+.profile_delete:hover {
+    cursor: pointer;
+    background-color: var(--darkred);
+}
+
+.each_user {
+    color: var(--lightgray);
+}
+.user_inputs {
+    margin-top: 10px;
+}
+.each_user_buttons {
+    display: flex;
+    margin-top: 10px;
+}
+.user_private {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.user_private button {
+    border: none;
+    background-color: var(--red);
+    color: var(--lightgray);
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 24px;
+    margin-top: 10px;
+}
+.user_private button:hover {
+    cursor: pointer;
+    background-color: var(--darkred);
+}
+.user_invite {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.user_invite select {
+    border: none;
+    background-color: var(--red);
+    color: var(--lightgray);
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 20px 0 0 20px;
+    margin-top: 10px;
+}
+.user_invite button {
+    border: none;
+    background-color: var(--red);
+    color: var(--lightgray);
+    font-size: 15px;
+    padding: 7px;
+    border-radius: 0 20px 20px 0;
+    margin-top: 10px;
+}
+.user_invite button:hover {
+    cursor: pointer;
+    background-color: var(--darkred);
+}

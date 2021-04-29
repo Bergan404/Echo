@@ -65,7 +65,7 @@ export default function PrivateMessagesDisplay(props) {
                 <div className="message_info">
                   {message.username}
                   {console.log(message.created_at)}
-                  <Moment local date={message.created_at} format="hh:mm" tz="Atlantic/Reykjavik"/>
+                  <Moment local date={message.created_at} format="hh:mm" tz="Atlantic/Reykjavik" />
                 </div>
                 <div className="message_content">{message.messages} </div>
               </div>

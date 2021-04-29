@@ -18,7 +18,7 @@ function UsersList() {
     return (
       <div key={user.id} className="users_li">
         <NavLink className="users_nav" to={`/users/${user.id}`}>
-          <img className='user_image' src={user.image ? user.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"}></img>
+          <img className='user_image' src={user.image ? user.image : "../images/default-echo-photo1.png"}></img>
           <br></br>
           <p>{user.username}</p>
         </NavLink>

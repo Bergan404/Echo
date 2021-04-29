@@ -5,6 +5,8 @@ import LogoutButton from '../auth/LogoutButton';
 // import LoginFormModal from '../Modals/index'
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
+import Profile from '../Profile'
+
 
 import './navbars.css';
 import { NavLink } from 'react-router-dom';
@@ -41,6 +43,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
   const [modalIsOpenLogin, setIsOpenLogin] = useState(false);
   const [modalIsOpenSignUp, setIsOpenSignUp] = useState(false);
+  const [modalIsOpenProfile, setIsOpenProfile] = useState(false);
 
   function openModalLogin() {
     setIsOpenLogin(true);
@@ -48,6 +51,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
   function openModalSignUp() {
     setIsOpenSignUp(true);
+  }
+
+  function openModalProfile() {
+    setIsOpenProfile(true);
   }
 
   function afterOpenModal() {
@@ -61,6 +68,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
   function closeModalSignUp() {
     setIsOpenSignUp(false);
+  }
+
+  function closeModalProfile() {
+    setIsOpenProfile(false);
   }
 
 
@@ -136,7 +147,26 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         {
           user ?
             <div className='topnavdiv_foruser'>
-              <img src={user.image ? user.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"} className='profile_picture'></img>
+              <button
+                className="UserModalSubmit"
+                onClick={openModalProfile}
+              >
+                <img src={user.image ? user.image : "../images/default-echo-photo1.png"} className='profile_picture'></img>
+              </button>
+              <Modal
+                isOpen={modalIsOpenProfile}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModalProfile}
+                style={customStyles}
+                contentLabel="Example Modal"
+              >
+                <Profile
+                  user={user}
+                  authenticated={authenticated}
+                  setAuthenticated={setAuthenticated}
+                  closeModalLogin={closeModalProfile}
+                />
+              </Modal>
               <LogoutButton />
             </div> : " "
         }
