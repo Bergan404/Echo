@@ -15,6 +15,7 @@ from .api.main import main_routes
 from .api.server_routes import server_routes
 from .api.private_messages import private_messages_routes
 from .seeds import seed_commands
+import pytz
 
 from .config import Config
 import logging
@@ -34,7 +35,7 @@ def handleMessage(data):
     message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
     db.session.add(message)
     db.session.commit()
-    data['created_at'] = str(time)
+    data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
 
     emit('room', data, to=data['room'])
     #send(data, room=data['room'])
@@ -61,7 +62,7 @@ def handlePrivateMessage(data):
     
     db.session.add(private_message)
     db.session.commit()
-    data['created_at'] = str(time)
+    data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
 
     emit('private_room', data, to=data['roomId'], namespace='/private')
     #send(data, room=data['room'])
