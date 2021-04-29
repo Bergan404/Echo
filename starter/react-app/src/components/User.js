@@ -20,8 +20,8 @@ function User({ user }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: user_id,
-        server_id: server_id
+        "user_id": user_id,
+        "server_id": server_id
       })
     })
 
