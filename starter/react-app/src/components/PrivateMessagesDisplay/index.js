@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
-//const io = require('socket.io-client');
-//export const socket = io('http://localhost:5000/private_messages');
+const io = require('socket.io-client');
+export const privateSocket = io('http://localhost:5000/private');
 
 export default function PrivateMessagesDisplay(props) {
   const messages = useSelector(state => state.privateMessages)
@@ -10,16 +10,16 @@ export default function PrivateMessagesDisplay(props) {
   const [message, setMessage] = useState('');
   const [stateMessages, setStateMessages] = useState(messages)
   const [thing, setThing] = useState(null)
-    console.log(props.currentRecipientId)
 
   const onClick = e =>{
+      console.log(props.currentRecipientId,"current recipeient id***********************")
       e.preventDefault();
       if (message !== "") {
         user.messages = message
-
-        user.room = Number(props.currentRecipientId)
-        user.user_id = user.id
-       // socket.send(user);
+        user.roomId = props.roomId
+        user.reciever_id = Number(props.currentRecipientId)
+        user.sender_id = user.id
+       privateSocket.emit("private_message", user);
         setMessage("");
 
     } else {
@@ -37,11 +37,10 @@ useEffect(()=>{
         setStateMessages([...stateMessages, thing])
     }
 }, [messages.length, thing])
-// useEffect(() =>{
-//     socket.on("room", (msg) => {
-//         setThing(msg)
-
-// })}, [stateMessages]);
+useEffect(() =>{
+    privateSocket.on("private_room", (msg) => {
+      setThing(msg);
+    });}, [stateMessages]);
 
   return (
     <div>
