@@ -36,29 +36,42 @@ export default function Server() {
 
   }
   useEffect(async () => {
-    console.log(roomId, '*************************************')
     privateSocket.emit('join_room', {roomId:roomId})
 }, [roomId])
 
 
   return (
-    <div className='outer_container'>
+    <div className='server_something_container'>
       <div className='left'>
         <LeftNavBar />
       </div>
-      <div>
-        <div>{user.username}</div>
-        {recipientsList.length > 0 && recipientsList.map((recipient)=>(
-          <div id={recipient.id} className={recipient.username}
-            onClick={onClick}
-          >
-              {recipient.username}
-          </div>
-        ))}
-        <PrivateMessagesDisplay currentRecipientId={currentRecipientId} roomId={roomId}/>
-
+      <div className='inner_server_container'>
+        <div className="server-left">
+          <div className='inner_server_left'> 
+            <div >
+            <h4>Direct Messages</h4>
+                {recipientsList.length > 0 && recipientsList.map((recipient)=>(
+                  <div id={recipient.id} className={recipient.username}
+                    onClick={onClick}
+                      >
+                    {recipient.username}
+                  </div>
+                ))}
+              </div>
+                </div>
+              </div>
+              <div className="server_middle">
+                <div className="server-middle">
+                <PrivateMessagesDisplay currentRecipientId={currentRecipientId} roomId={roomId}/>
+                </div>
+              </div>
+              <div className='server_right'>
+                <div className="server-right">
+            </div>
+         </div>
       </div>
     </div>
-
+    
   )
 }
+
