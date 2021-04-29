@@ -104,12 +104,15 @@
     display: flex;
     margin-top: auto;
     margin-bottom: auto;
+
 }
 .topnavdiv {
     /* margin-left: 10px;
     margin-right: 10px; */
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .topnavdivmessage {
     /* margin-left: 10px;

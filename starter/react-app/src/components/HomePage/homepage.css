@@ -46,6 +46,10 @@
     height: 100px;
     border-radius: 50px;
 }
+.user_image:hover {
+    cursor: pointer;
+    border-radius: 24px;
+}
 .all_users_h1 {
     color: var(--lightgray);
     padding: 20px;
@@ -75,6 +79,9 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
+}
+.server_image:hover {
+    border-radius: 24px;
 }
 .servers_nav {
     text-decoration: none;

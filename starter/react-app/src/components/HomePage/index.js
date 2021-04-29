@@ -84,37 +84,9 @@ export default function Home({ authenticated, setAuthenticated }) {
               allUsers?.length && allUsers.slice(0, 10).map((user) => (
                 <>
                   <UserDivs user={user} />
-                  {/* <div key={user.id} className="users_li">
-                    <button
-                      className="UserModalSubmit"
-                      onClick={openModalUsers}
-                    >
-                      <img className='user_image' src={user.image ? user.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"}></img>
-                      <br></br>
-                      <p>{user.username}</p>
-                      <User name={user} />
-                    </button>
-                  </div> */}
-
                 </>
               ))
             }
-            {/* <div>
-              <Modal
-                isOpen={modalIsOpenLogin}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModalUsers}
-                style={customStyles}
-                contentLabel="Example Modal"
-              >
-                <User
-                  setIsOpenLogin={setIsOpenLogin}
-                  authenticated={authenticated}
-                  setAuthenticated={setAuthenticated}
-                  closeModalLogin={closeModalUsers}
-                />
-              </Modal>
-            </div> */}
           </div>
         </div>
 
