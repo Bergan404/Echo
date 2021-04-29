@@ -37,7 +37,6 @@ Modal.setAppElement("#root");
 const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
   const user_servers = useSelector(state => state.servers)
-  console.log(user_servers)
   const [modalIsOpenLogin, setIsOpenLogin] = useState(false);
   const dispatch = useDispatch()
 
