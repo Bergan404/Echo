@@ -19,7 +19,7 @@ def seed_users_servers():
     db.session.add(demo)
 
     # Repeat
-    jairo = User(username='Jairo', email='jairo@aa.io', password='password', profile_picture='',
+    jairo = User(username='Jairo', email='jairo@aa.io', password='password', profile_picture='https://avatarfiles.alphacoders.com/128/thumb-128984.png',
                 created_at=datetime.now())
 
     jairo.servers.append(demo_server2)
