@@ -20,7 +20,9 @@ export const findAllServers = () => async (dispatch) => {
 // reducer
 // const initialState = {};
 
-export default function serversReducer(state = { servers: {} }, action) {
+
+export default function serversReducer(state = {}, action) {
+
   switch (action.type) {
     case ALL_SERVERS:
       return action.payload.servers;

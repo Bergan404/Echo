@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import LeftNavBar from '../components/Navbars/LeftNavBar';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -23,6 +24,9 @@ function UsersList() {
 
   return (
     <>
+      <div className='left'>
+        <LeftNavBar />
+      </div>
       <h1>User List: </h1>
       <ul>{userComponents}</ul>
     </>

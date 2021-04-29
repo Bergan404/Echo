@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import LeftNavBar from '../components/Navbars/LeftNavBar';
 
 function User() {
   const [user, setUser] = useState({});
   // Notice we use useParams here instead of getting the params
   // From props.
-  const { userId }  = useParams();
+  const { userId } = useParams();
 
   useEffect(() => {
     if (!userId) {
@@ -23,17 +24,22 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <>
+      <div className='left'>
+        <LeftNavBar />
+      </div>
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {user.email}
+        </li>
+      </ul>
+    </>
   );
 }
 export default User;

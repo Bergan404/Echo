@@ -25,7 +25,6 @@ export const getChannels = (serverId) => async (dispatch) => {
 export default function channelsReducer(state = { channels: {} }, action) {
   switch (action.type) {
     case GET_CHANNELS:
-      console.log(action.payload)
       return action.payload.channels;
     default:
       return state;

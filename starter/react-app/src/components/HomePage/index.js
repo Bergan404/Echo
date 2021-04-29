@@ -37,7 +37,7 @@ export default function Home() {
           <img className='user_image' src="https://pbs.twimg.com/media/Eo2Y7g0VEAUBwG_.jpg"></img>
           <br></br>
           {user.username}
-          </NavLink>
+        </NavLink>
       </li>
     );
   });
@@ -50,7 +50,7 @@ export default function Home() {
       <div className='users_servers'>
         <img className='banner' src='https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5'></img>
         <div className='users_container'>
-        <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active" className='user_a'>
+          <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active" className='user_a'>
             Users
             {/* Currently brings to all users but we can fix that */}
           </NavLink></h2>
@@ -66,7 +66,7 @@ export default function Home() {
               servers?.length && servers.slice(0, 10).map((server) => (
                 <li className="servers_li">
                   <NavLink to={`/server/${server.id}`} className="servers_nav">
-                    <img className='server_image' src="https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"></img>
+                    <img className='server_image' src={server.image ? server.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"}></img>
                     <br></br>
                     {server.name}
                   </NavLink>
