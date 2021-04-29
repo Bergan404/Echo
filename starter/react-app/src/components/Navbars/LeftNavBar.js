@@ -81,12 +81,6 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   return (
     <nav className='leftnav'>
       <div className='leftnavdivlogo'>
-          <NavLink to='/privatemessages'>
-            <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
-            <span>Private Messages</span>
-          </NavLink>
-      </div>
-      <div className='leftnavdivlogo'>
         <NavLink to="/" exact={true} activeClassName="active">
           <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
         </NavLink>
@@ -131,6 +125,11 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                     closeModalLogin={closeModalServer}
                   />
                 </Modal>
+              </div>
+              <div className='topnavdivmessage'>
+                <NavLink to='/privatemessages'>
+                  <i class="fas fa-comments"></i>
+                </NavLink>
               </div>
             </> : " "
         }

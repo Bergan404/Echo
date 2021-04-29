@@ -13,6 +13,7 @@ import Home from './components/HomePage/index'
 import Server from './components/Server'
 import ServerList from './components/ServerList'
 import PrivateMessages from './components/PrivateMessages'
+import Creators from './components/Navbars/Creators'
 
 
 function App() {
@@ -35,12 +36,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
+        <Route path="/creators" exact={true}>
+          <Creators />
         </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route> */}
         <ProtectedRoute path="/users" exact={true} >
           <UsersList />
         </ProtectedRoute>
