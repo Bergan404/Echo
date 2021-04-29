@@ -73,7 +73,7 @@ export default function Home({ authenticated, setAuthenticated }) {
         <LeftNavBar />
       </div>
       <div className='users_servers'>
-        <img className='banner' src='https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5'></img>
+        <img className='banner' src='../images/Echo-header.png'></img>
         <div className='users_container'>
           <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active" className='user_a'>
             Users
@@ -99,7 +99,7 @@ export default function Home({ authenticated, setAuthenticated }) {
               servers?.length && servers.slice(0, 10).map((server) => (
                 <div className="servers_li">
                   <NavLink to={`/server/${server.id}`} className="servers_nav">
-                    <img className='server_image' src={server.image ? server.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"}></img>
+                    <img className='server_image' src={server.image ? server.image : "../images/default-echo-photo1.png"}></img>
                     <br></br>
                     <p>{server.name}</p>
                   </NavLink>
