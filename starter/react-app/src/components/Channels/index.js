@@ -9,12 +9,15 @@ export default function Server() {
   const dispatch = useDispatch();
   const channels = useSelector(state => state.channels)
   const [currentChannelId, setCurrentChannelId] = useState(null)
+  const [currentChannelName, setCurrentChannelName] = useState(null)
+
   let {serverId} = useParams()
   useEffect(async () => {
     const data = await dispatch(getChannels(serverId))
     if(data.channels[0]){
       await dispatch(getMessages(serverId, data.channels[0].id))
       setCurrentChannelId(data.channels[0].id)
+      setCurrentChannelName(data.channels[0].name)
     }
   }, [dispatch])
   const onClick = async (e) =>{
@@ -22,8 +25,7 @@ export default function Server() {
         socket.emit('leave_room', currentChannelId)
         await dispatch(getMessages(serverId, channelId))
         await setCurrentChannelId(Number(channelId))
-
-
+        await setCurrentChannelName(e.target.classList[0])
       }
       useEffect(async () => {
         socket.emit('join_room', currentChannelId)
@@ -34,13 +36,13 @@ export default function Server() {
     <div>
       <ul>
           {channels.length > 0 && channels.map((channel) => (
-            <button onClick={onClick} id={channel.id}>
+            <button className={channel.name} onClick={onClick} id={channel.id}>
                   {channel.name}
               </button>
           ))}
       </ul>
       <div className='server_messages'>
-        <Messages currentChannelId={currentChannelId}/>
+        <Messages currentChannelId={currentChannelId} currentChannelName={currentChannelName}/>
       </div>
     </div>
   )

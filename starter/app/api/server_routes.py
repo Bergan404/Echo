@@ -52,10 +52,11 @@ def server_channels_messages(server_id, channel_id):
         user_object = current_user.to_dict()
         # add the key-value to the message dictionary
         user['username']= user_object['username']
-        try:
-            user['profile_picture']= user_object['profile_picture']
-        except:
-            pass
+        if user_object['username'] == 'Jairo':
+            print(user_object, 'this is the user ---------------------------')
+        if "image"in user_object:
+            print('I am here ******************************')
+            user['image']= user_object['image']
     return {"messages": channel_messages}
 
 

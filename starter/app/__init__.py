@@ -8,13 +8,14 @@ from flask_login import LoginManager
 # flask socket
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 from datetime import datetime
-from .models import db, User, Message
+from .models import db, User, Message, PrivateMessage
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.main import main_routes
 from .api.server_routes import server_routes
 from .api.private_messages import private_messages_routes
 from .seeds import seed_commands
+import pytz
 
 from .config import Config
 import logging
@@ -34,7 +35,7 @@ def handleMessage(data):
     message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
     db.session.add(message)
     db.session.commit()
-    data['created_at'] = str(time)
+    data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
 
     emit('room', data, to=data['room'])
     #send(data, room=data['room'])
@@ -52,6 +53,38 @@ def handleLeaveRoom(roomId):
 @socketio.on('connect')
 def handleConnect():
     print(request, 'I am from connect to socket')
+
+#---------------------------private messages --------------------
+@socketio.on('private_message', namespace='/private')
+def handlePrivateMessage(data):
+    time = datetime.now()
+    private_message = PrivateMessage(messages = data['messages'], sender_id = data['sender_id'], reciever_id = data['reciever_id'], created_at=time)
+    
+    db.session.add(private_message)
+    db.session.commit()
+    data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
+
+    emit('private_room', data, to=data['roomId'], namespace='/private')
+    #send(data, room=data['room'])
+
+
+@socketio.on('join_room',namespace='/private')
+def handlePrivateJoinRoom(roomId):
+    print(roomId['roomId'], '------------------------------------------')
+    join_room(roomId['roomId'])
+    return None
+
+@socketio.on('leave_room',namespace='/private')
+def handlePrivateLeaveRoom(roomId):
+    leave_room(roomId)
+    return None
+
+@socketio.on('connect',namespace='/private')
+def handlePrivateConnect():
+    print(request, 'I am from connect to private socket')
+
+
+
 
 if __name__ == '__main__':
     socketio.run(app)
