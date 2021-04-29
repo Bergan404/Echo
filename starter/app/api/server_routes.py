@@ -91,3 +91,7 @@ def delete_server():
     print(serverId)
     db.session.delete(server)
     db.session.commit()
+
+@server_routes.route('/adduser', methods=["POST"])
+def addServerUser():
+    return "awesome"
