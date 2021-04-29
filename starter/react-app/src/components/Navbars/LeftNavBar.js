@@ -52,15 +52,14 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
     setIsOpenLogin(false);
   }
 
-  let newArray;
-  if (user) {
-    function usersServers() {
-      const ourServer = [];
-      const values = Object.values(user_servers);
-      for (let obj in values) {
-        if (values[obj].admin_id == user.id) {
-          ourServer.push(values[obj])
-        }
+
+  function usersServers(){
+    const ourServer = [];
+    const values = Object.values(user_servers);
+    for (let obj in values) {
+      if (user !==null && values[obj].admin_id == user.id) {
+        ourServer.push(values[obj])
+
       }
       console.log(ourServer);
       return ourServer;
@@ -75,6 +74,12 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   return (
     <nav className='leftnav'>
       <div className='leftnavdivlogo'>
+          <NavLink to='/privatemessages'>
+            <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
+            <span>Private Messages</span>
+          </NavLink>
+      </div>
+      <div className='leftnavdivlogo'>
         <NavLink to="/" exact={true} activeClassName="active">
           <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
         </NavLink>
@@ -83,6 +88,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
       <div className='leftnavdiv'>
         {
           user ?
+
             <>
               <div className='topnavdiv'>
                 <button
@@ -112,6 +118,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                   contentLabel="Example Modal"
                 >
                   <ServerForm
+
                     setIsOpenLogin={setIsOpenLogin}
                     authenticated={authenticated}
                     setAuthenticated={setAuthenticated}

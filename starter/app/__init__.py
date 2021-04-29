@@ -12,7 +12,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.main import main_routes
 from .api.server_routes import server_routes
-
+from .api.private_messages import private_messages_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -23,25 +23,25 @@ logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
-
+user_counter = 0
 
 # Socket handler for receiving a message
 @socketio.on('message')
 def handleMessage(data):
-    print('this^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+
     time = datetime.now()
     message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
     db.session.add(message)
     db.session.commit()
     data['created_at'] = str(time)
-    print(data)
+
     emit('room', data, to=data['room'])
     #send(data, room=data['room'])
 
 
 @socketio.on('join_room')
 def handleJoinRoom(roomId):
-    print(roomId, '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+
     join_room(roomId)
     return None
 
@@ -49,7 +49,9 @@ def handleJoinRoom(roomId):
 def handleLeaveRoom(roomId):
     leave_room(roomId)
     return None
-
+@socketio.on('connect')
+def handleConnect():
+    print(request, 'I am from connect to socket')
 
 if __name__ == '__main__':
     socketio.run(app)
@@ -73,6 +75,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(main_routes, url_prefix='/api/main')
 app.register_blueprint(server_routes, url_prefix='/api/server')
+app.register_blueprint(private_messages_routes, url_prefix='/api/private_messages')
 db.init_app(app)
 Migrate(app, db)
 
@@ -110,7 +113,6 @@ def inject_csrf_token(response):
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
-    print("path", path)
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')

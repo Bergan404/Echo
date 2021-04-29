@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getChannels } from '../../store/channels'
 import {useParams} from 'react-router-dom'
@@ -7,9 +6,9 @@ import {getMessages} from '../../store/messages'
 import Messages, {socket} from '../Messages'
 
 export default function Server() {
-  const [currentChannelId, setCurrentChannelId] = useState(2)
   const dispatch = useDispatch();
   const channels = useSelector(state => state.channels)
+  const [currentChannelId, setCurrentChannelId] = useState(null)
   let {serverId} = useParams()
   useEffect(async () => {
     const data = await dispatch(getChannels(serverId))
@@ -21,12 +20,16 @@ export default function Server() {
   const onClick = async (e) =>{
         let channelId = e.target.id
         socket.emit('leave_room', currentChannelId)
-        setCurrentChannelId(channelId)
+        await dispatch(getMessages(serverId, channelId))
+        await setCurrentChannelId(Number(channelId))
+
+
+      }
+      useEffect(async () => {
         socket.emit('join_room', currentChannelId)
 
-        await dispatch(getMessages(serverId, channelId))
-  }
-  //useEffect(onClick(channels[0].id), [])
+  }, [currentChannelId])
+
   return (
     <div>
       <ul>
