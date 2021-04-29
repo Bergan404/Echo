@@ -151,7 +151,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 className="UserModalSubmit"
                 onClick={openModalProfile}
               >
-                <img src={user.image ? user.image : "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"} className='profile_picture'></img>
+                <img src={user.image ? user.image : "../images/default-echo-photo1.png"} className='profile_picture'></img>
               </button>
               <Modal
                 isOpen={modalIsOpenProfile}
