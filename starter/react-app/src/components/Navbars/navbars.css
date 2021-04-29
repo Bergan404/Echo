@@ -10,7 +10,7 @@
 }
 .leftnavdiv {
     /* margin-top: 10px; */
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -40,6 +40,14 @@
     max-width: 15em;
     width: 100%;
 	box-sizing: inherit;
+}
+.server_left_image {
+    width: 55px;
+    border-radius: 50px;
+
+}
+.servers_left{
+    margin-bottom: 8px;
 }
 .fa-plus-circle {
     font-size: 25px;
@@ -122,3 +130,4 @@
     right: 6.5em;
     top: 10px;
 }
+

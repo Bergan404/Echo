@@ -57,15 +57,20 @@ useEffect(() =>{
                 </li>
             ))}
         </ul>
-        <input type="text"
-         value={message}
-         onChange={(e)=> setMessage(e.target.value)}
-         placeholder='Message'
-         >
-        </input>
-        <button
-        onClick={onClick}
-        >Send</button>
+        <div className='message_bar'>
+            <form onSubmit={onClick}>
+                <textarea type="text"
+                value={message}
+                onChange={(e)=> setMessage(e.target.value)}
+                placeholder='Message'
+                >
+                </textarea>
+                {/* <input type="submit" value="Submit" /> */}
+                <button
+                onClick={onClick}
+                >Send</button>
+            </form>
+        </div>
     </div>
   )
 }

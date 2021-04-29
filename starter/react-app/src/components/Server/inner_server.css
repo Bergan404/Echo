@@ -1,0 +1,49 @@
+.inner_server_container {
+    display: flex;
+    /* width: 90%; */
+    /* justify-content: space-evenly; */
+}
+.server-left {
+    background-color: var(--darkred);
+    color: var(--lightgray);
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+.inner_server_left {
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+.server_middle {
+    background-color: var(--greener);
+    color: var(--lightgray);
+    flex: auto;
+}
+.server-middle {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.server_right {
+    background-color: var(--darkred);
+    color: var(--lightgray);
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+.server-right {
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+.message_bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 30px;
+}

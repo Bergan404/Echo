@@ -1,12 +1,20 @@
+.Errors {
+    text-align: center;
+    color: red;
+}
 .login_form {
     padding: 10px;
+    text-align: center;
 }
 .login_div {
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .login_input {
     font-size: 15px;
-    margin: 5px 0 5px 0;
+    margin: 5px auto 5px auto;
+    /* width: 100%; */
     padding: 5px;
     border-radius: 10px;
 }
@@ -14,6 +22,7 @@
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+
 }
 .login button{
     font-size: 15px;
@@ -37,9 +46,29 @@
 
 .signup_form {
     padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 .signup_div {
     width: 100%;
+}
+.signup_div_image {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.signup_div_image label {
+    font-size: 15px;
+    color: var(--lightgray);
+}
+.singup_input_image {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 24px;
+    background-color: var(--red);
+    color: var(--lightgray);
 }
 .singup_input {
     font-size: 15px;
@@ -75,6 +104,17 @@
 .server_div label {
     color: var(--lightgray);
     margin-right: 10px;
+}
+.server_input_checkbox {
+    margin-left: 5px;
+}
+.server_input_image {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 24px;
+    background-color: var(--red);
+    color: var(--lightgray);
 }
 .server_input {
     font-size: 15px;

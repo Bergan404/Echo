@@ -39,7 +39,9 @@ export default function Server() {
               </button>
           ))}
       </ul>
-      <Messages currentChannelId={currentChannelId}/>
+      <div className='server_messages'>
+        <Messages currentChannelId={currentChannelId}/>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, session, redirect
+# from werkzeug.security import secure_filename
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -18,6 +19,7 @@ from .seeds import seed_commands
 from .config import Config
 import logging
 
+
 logging.basicConfig()
 logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
 
@@ -28,7 +30,6 @@ user_counter = 0
 # Socket handler for receiving a message
 @socketio.on('message')
 def handleMessage(data):
-
     time = datetime.now()
     message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
     db.session.add(message)
@@ -41,7 +42,6 @@ def handleMessage(data):
 
 @socketio.on('join_room')
 def handleJoinRoom(roomId):
-
     join_room(roomId)
     return None
 
@@ -116,3 +116,37 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+# AWS
+# @app.route("/", methods=["POST"])
+# def upload_file():
+
+# 	# A
+#     if "user_file" not in request.files:
+#         return "No user_file key in request.files"
+
+# 	# B
+#     file    = request.files["user_file"]
+
+#     """
+#         These attributes are also available
+
+#         file.filename               # The actual name of the file
+#         file.content_type
+#         file.content_length
+#         file.mimetype
+
+#     """
+
+# 	# C.
+#     if file.filename == "":
+#         return "Please select a file"
+
+# 	# D.
+#     if file and allowed_file(file.filename):
+#         file.filename = file.filename
+#         output   	  = upload_file_to_s3(file, app.config["S3_BUCKET"])
+#         return str(output)
+
+#     else:
+#         return redirect("/")

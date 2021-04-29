@@ -10,11 +10,26 @@ const ServerForm = () => {
   const server_id = useSelector(state => state.create)
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [ispublic, setisPublic] = useState(false);
 
   const onServerCreation = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+        formData.append("image", image);
+
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+
+        // const res = await fetch('/api/images', {
+        //     method: "POST",
+        //     body: formData,
+        // });
+        // if (res.ok) {
+        //     await res.json();
+        //     history.push("/images");
+        // }
+
     const data = await dispatch(serverCreate(created, name, image, ispublic));
     if (data) {
       history.push(`/server/${data.id}`);
@@ -26,7 +41,8 @@ const ServerForm = () => {
   }
 
   const updateImage = (e) => {
-    setImage(e.target.value);
+    const file = e.target.files[0];
+    setImage(file)
   }
 
   const updatePublic = (e) => {
@@ -55,11 +71,10 @@ const ServerForm = () => {
         <label htmlFor="image">Image</label>
         <input
           name="image"
-          type="text"
-          placeholder="Image"
-          value={image}
+          type="file"
+          accept="image/*"
           onChange={updateImage}
-          className='server_input'
+          className='server_input_image'
         />
       </div>
       <div className='server_div'>
@@ -69,7 +84,7 @@ const ServerForm = () => {
           type="checkbox"
           value={ispublic}
           onChange={updatePublic}
-          className='server_input'
+          className='server_input_checkbox'
         />
       </div>
       <div className="create">

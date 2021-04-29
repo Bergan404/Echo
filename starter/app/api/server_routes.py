@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 
 from app.models import User, db, Server, Channel, Message, server_users
 from app.forms import ServerForm
+from app.helpers import(upload_file_to_s3, allowed_file, get_unique_filename)
 
 
 server_routes = Blueprint('server', __name__)
@@ -65,10 +66,15 @@ def create_server():
     form = ServerForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
     if form.is_submitted():
+        image=request.files["image"]
+        image.filename = get_unique_filename(image.filename)
+        # if (image is not null):
+        upload = upload_file_to_s3(image)
+        url = upload["url"]
         server = Server(
             admin_id=form.data['admin_id'],
             name=form.data['name'],
-            image=form.data['image'],
+            image=url,
             public=form.data['public'],
             created_at=form.data['created_at']
         )
@@ -76,3 +82,12 @@ def create_server():
         db.session.commit()
         return server.to_dict()
     return "did not go thru", 401
+
+
+@server_routes.route('/', methods=["DELETE"])
+def delete_server():
+    serverId = request.json
+    server = Server.query.get(serverId)
+    print(serverId)
+    db.session.delete(server)
+    db.session.commit()
