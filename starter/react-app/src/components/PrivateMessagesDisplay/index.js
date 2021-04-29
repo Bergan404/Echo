@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
-// import io from "socket.io-client"
+//const io = require('socket.io-client');
+//export const socket = io('http://localhost:5000/private_messages');
 
-// let server = "http://localhost:5000"
-// export let socket = io.connect(`${server}`)
-const io = require('socket.io-client');
-export const socket = io('http://localhost:5000');
-
-export default function Messages(props) {
-  const messages = useSelector(state => state.messages)
+export default function PrivateMessagesDisplay(props) {
+  const messages = useSelector(state => state.privateMessages)
   const user = useSelector(state => state.session.user)
   const [message, setMessage] = useState('');
   const [stateMessages, setStateMessages] = useState(messages)
   const [thing, setThing] = useState(null)
-
+    console.log(props.currentRecipientId)
 
   const onClick = e =>{
       e.preventDefault();
       if (message !== "") {
         user.messages = message
-        user.room = Number(props.currentChannelId)
+
+        user.room = Number(props.currentRecipientId)
         user.user_id = user.id
-        socket.send(user);
+       // socket.send(user);
         setMessage("");
 
     } else {
@@ -31,7 +28,7 @@ export default function Messages(props) {
 }
     useEffect(() =>{
         setThing(null)
-    }, [props.currentChannelId])
+    }, [props.currentRecipientId])
 useEffect(()=>{
     if (thing === null){
         setStateMessages(messages)
@@ -40,11 +37,11 @@ useEffect(()=>{
         setStateMessages([...stateMessages, thing])
     }
 }, [messages.length, thing])
-useEffect(() =>{
-    socket.on("room", (msg) => {
-        setThing(msg)
+// useEffect(() =>{
+//     socket.on("room", (msg) => {
+//         setThing(msg)
 
-})}, [stateMessages]);
+// })}, [stateMessages]);
 
   return (
     <div>
@@ -57,20 +54,15 @@ useEffect(() =>{
                 </li>
             ))}
         </ul>
-        <div className='message_bar'>
-            <form onSubmit={onClick}>
-                <textarea type="text"
-                value={message}
-                onChange={(e)=> setMessage(e.target.value)}
-                placeholder='Message'
-                >
-                </textarea>
-                {/* <input type="submit" value="Submit" /> */}
-                <button
-                onClick={onClick}
-                >Send</button>
-            </form>
-        </div>
+        <input type="text"
+         value={message}
+         onChange={(e)=> setMessage(e.target.value)}
+         placeholder='Message'
+         >
+        </input>
+        <button
+        onClick={onClick}
+        >Send</button>
     </div>
   )
 }

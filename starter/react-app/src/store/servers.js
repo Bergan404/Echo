@@ -13,7 +13,6 @@ export const findAllServers = () => async (dispatch) => {
     const servers = await response.json();
     return dispatch(allServers(servers));
   } else {
-    console.log("repsonse not ok")
   }
   return null
 }
@@ -21,7 +20,9 @@ export const findAllServers = () => async (dispatch) => {
 // reducer
 // const initialState = {};
 
+
 export default function serversReducer(state = {}, action) {
+
   switch (action.type) {
     case ALL_SERVERS:
       return action.payload.servers;

@@ -13,7 +13,6 @@ export const getMessages = (serverId, channelId) => async (dispatch) => {
     const messages = await response.json();
     return dispatch(getTheMessages(messages));
   } else {
-    console.log("repsonse not ok")
   }
   return null
 }
@@ -22,10 +21,8 @@ export const getMessages = (serverId, channelId) => async (dispatch) => {
 // const initialState = {};
 
 export default function messagesReducer(state = { messages: {} }, action) {
-  console.log(action)
   switch (action.type) {
     case GET_MESSAGES:
-      console.log(action.payload)
       return action.payload.messages;
     default:
       return state;

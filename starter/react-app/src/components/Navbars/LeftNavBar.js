@@ -81,6 +81,12 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
   return (
     <nav className='leftnav'>
       <div className='leftnavdivlogo'>
+          <NavLink to='/privatemessages'>
+            <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
+            <span>Private Messages</span>
+          </NavLink>
+      </div>
+      <div className='leftnavdivlogo'>
         <NavLink to="/" exact={true} activeClassName="active">
           <img className='echo_logo' src='../images/echo_logo.png' alt='logo'></img>
         </NavLink>
@@ -89,6 +95,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
       <div className='leftnavdiv'>
         {
           user ?
+
             <>
               {
                 newArray?.slice(0, 8).map((server) => (
@@ -117,6 +124,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                   contentLabel="Example Modal"
                 >
                   <ServerForm
+
                     setIsOpenLogin={setIsOpenLogin}
                     authenticated={authenticated}
                     setAuthenticated={setAuthenticated}

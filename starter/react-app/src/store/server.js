@@ -13,7 +13,6 @@ export const getServer = (serverId) => async (dispatch) => {
     const server = await response.json();
     return dispatch(getaServer(server));
   } else {
-    console.log("repsonse not ok")
   }
   return null
 }

@@ -47,6 +47,7 @@ export const serverCreate = (admin_id, name, image, isPublic) => async (dispatch
 
 export default function createReducer(state = { create: {} }, action) {
     switch (action.type) {
+
         case CREATE_SERVER:
             return action.payload;
         case DELETE_SERVER:
@@ -54,5 +55,6 @@ export default function createReducer(state = { create: {} }, action) {
             return state
         default:
             return state;
+
     }
 }
