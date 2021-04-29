@@ -1,0 +1,29 @@
+.profile {
+    color: var(--lightgray);
+}
+.profile_input {
+    margin-top: 10px;
+}
+.profile_delete {
+    border: none;
+    background-color: var(--red);
+    color: var(--lightgray);
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 24px;
+    margin-top: 10px;
+}
+.profile_delete:hover {
+    cursor: pointer;
+    background-color: var(--darkred);
+}
+
+.each_user {
+    color: var(--lightgray);
+}
+.user_inputs {
+    margin-top: 10px;
+}
+.each_user_buttons {
+    display: flex;
+}

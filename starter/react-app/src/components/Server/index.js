@@ -16,7 +16,6 @@ export default function Server() {
   const dispatch = useDispatch();
   const server = useSelector(state => state.server)
   const user = useSelector(state => state.session.user)
-  console.log(user);
   let { serverId } = useParams()
   useEffect(async () => {
     await dispatch(getServer(serverId))

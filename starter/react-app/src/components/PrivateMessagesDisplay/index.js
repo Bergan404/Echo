@@ -10,7 +10,6 @@ export default function PrivateMessagesDisplay(props) {
   const [message, setMessage] = useState('');
   const [stateMessages, setStateMessages] = useState(messages)
   const [thing, setThing] = useState(null)
-    console.log(props.currentRecipientId)
 
   const onClick = e =>{
       e.preventDefault();

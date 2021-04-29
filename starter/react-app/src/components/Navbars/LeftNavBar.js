@@ -67,13 +67,11 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
           ourServer.push(values[obj])
         }
       }
-      console.log(ourServer);
       return ourServer;
 
 
     }
     newArray = usersServers();
-    console.log(newArray[0]);
   }
 
 

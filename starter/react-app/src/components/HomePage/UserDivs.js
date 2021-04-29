@@ -48,7 +48,6 @@ export default function UserDivs({ user, authenticated, setAuthenticated }) {
   }
 
 
-  console.log(user);
   return (
     <div key={user.id} className="users_li">
       <button
