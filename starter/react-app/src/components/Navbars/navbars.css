@@ -44,10 +44,13 @@
 .server_left_image {
     width: 55px;
     border-radius: 50px;
-
 }
 .servers_left{
     margin-bottom: 8px;
+}
+.server_left_image:hover {
+    border-radius: 20px;
+    cursor: pointer;
 }
 .fa-plus-circle {
     font-size: 25px;
@@ -64,6 +67,18 @@
     padding: 15px;
     background-color: var(--darkred);
     border-radius: 50px;
+}
+.fa-comments {
+    font-size: 25px;
+    color: var(--lightgray);
+    /* border: 1px solid black; */
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+}
+.fa-comments:hover {
+    border-radius: 20px;
+    cursor: pointer;
 }
 .fa-plus-circle:hover {
     border-radius: 20px;
@@ -91,9 +106,15 @@
     margin-bottom: auto;
 }
 .topnavdiv {
-    margin-left: 10px;
-    margin-right: 10px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
     margin-top: auto;
+    margin-bottom: auto;
+}
+.topnavdivmessage {
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    margin-top: 10px;
     margin-bottom: auto;
 }
 .LoginModalSubmit {
@@ -130,4 +151,53 @@
     right: 6.5em;
     top: 10px;
 }
-
+.creators {
+    text-decoration: none;
+    color: var(--lightgray);
+    font-size: 25px;
+    padding: 20px;
+}
+.creators_wrapper::before,
+.creators_wrapper::after {
+    content: "";
+	height: 2px;
+	width: 0;
+	opacity: 0;
+	background-color: var(--greenblue);
+	position: absolute;
+	transition: all .5s;
+}
+.creators_wrapper::before {
+    top: 20px;
+}
+.creators_wrapper::after {
+    top: 50px;
+    /* right:  27.8em; */
+    left: 20px;
+}
+.creators_wrapper:hover::before,
+.creators_wrapper:hover::after {
+    width: 160px;
+    opacity: 0.7;
+}
+.we_the_dudes {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.each_dude {
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+.each_dude h1 {
+    color: var(--lightgray);
+}
+.fa-github {
+    color: var(--red);
+    text-align: center;
+    font-size: 40px;
+    margin-top: 10px;
+}

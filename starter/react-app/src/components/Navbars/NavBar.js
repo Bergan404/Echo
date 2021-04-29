@@ -7,6 +7,7 @@ import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
 
 import './navbars.css';
+import { NavLink } from 'react-router-dom';
 
 const customStyles = {
   overlay: {
@@ -65,8 +66,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
   return (
     <nav className='topnav'>
-      <div className='navbarLeft'>
-        <h2>Creators</h2>
+      <div className="creators_wrapper">
+        <NavLink to="/creators" exact={true} activeClassName="active" className='creators'>
+            Creators
+          </NavLink>
       </div>
       <div className='navbarCenter'>
         <h2>Echo</h2>

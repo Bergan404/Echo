@@ -18,3 +18,16 @@ body {
     background-color: var(--darkgreen);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+    width: 0.30rem;
+}
+body::-webkit-scrollbar-track {
+    background: var(--darkgreen);
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--red);
+}
