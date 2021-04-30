@@ -14,9 +14,9 @@ function User() {
       </div>
       <div>
       <h1 className="all_users_h1">All Servers: </h1>
-        <div className="ten-servers">
+        <div className="all-servers">
           {
-            allServers?.length && allServers.slice(0, 10).map((server) => (
+            allServers?.length && allServers.map((server) => (
               <div className="servers_li">
                 <NavLink to={`/server/${server.id}`} className="servers_nav">
                   <img className='server_image' src={server.image ? server.image : "../images/default-echo-photo1.png"}></img>

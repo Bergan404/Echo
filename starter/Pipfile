@@ -31,6 +31,7 @@ Flask-SocketIO = "*"
 boto3 = "*"
 pytz = "*"
 faker = "*"
+eventlet = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

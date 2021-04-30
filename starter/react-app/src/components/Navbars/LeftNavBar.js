@@ -92,7 +92,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                 newArray?.slice(0, 8).map((server) => (
                   <div className="servers_left">
                     <NavLink to={`/server/${server.id}`} className="servers_left_nav">
-                      <img className='server_left_image' src={server.image ? server.image : 'https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj'}></img>
+                      <img className='server_left_image' src={server.image ? server.image : '../images/default-echo-photo1.png'}></img>
                     </NavLink>
                   </div>
                 ))

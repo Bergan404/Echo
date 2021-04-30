@@ -19,13 +19,28 @@ import pytz
 
 from .config import Config
 import logging
+import os
 
 
 logging.basicConfig()
 logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+
+if os.environ.get("FLASK_ENV") == "production":
+    origins = [
+        "http://echo-cord.herokuapp.com/",
+        "https://echo-cord.herokuapp.com/"
+    ]
+else:
+    origins = "*"
+
+# create your SocketIO instance
+socketio = SocketIO(app, cors_allowed_origins=origins)
+
+
+
+# socketio = SocketIO(app, cors_allowed_origins="*")
 user_counter = 0
 
 # Socket handler for receiving a message
@@ -59,7 +74,7 @@ def handleConnect():
 def handlePrivateMessage(data):
     time = datetime.now()
     private_message = PrivateMessage(messages = data['messages'], sender_id = data['sender_id'], reciever_id = data['reciever_id'], created_at=time)
-    
+
     db.session.add(private_message)
     db.session.commit()
     data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"

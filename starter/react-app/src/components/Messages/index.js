@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Moment from "react-moment";
 import "moment-timezone";
 import "./Messages.css"
+import { useParams } from "react-router-dom";
 
 const io = require("socket.io-client");
 export const socket = io("http://localhost:5000");
@@ -13,6 +14,8 @@ export default function Messages(props) {
   const [message, setMessage] = useState("");
   const [stateMessages, setStateMessages] = useState(messages);
   const [thing, setThing] = useState(null);
+
+  let { serverId } = useParams();
 
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -43,7 +46,7 @@ export default function Messages(props) {
     } else {
       setStateMessages([...stateMessages, thing]);
     }
-  }, [messages.length , thing]);
+  }, [messages.length , thing, serverId]);
   useEffect(() => {
     scrollToBottom();
     socket.on("room", (msg) => {

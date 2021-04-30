@@ -16,9 +16,10 @@ export default function Server() {
   const server = useSelector(state => state.server)
   const user = useSelector(state => state.session.user)
   let { serverId } = useParams()
+
   useEffect(async () => {
     await dispatch(getServer(serverId))
-  }, [dispatch])
+  }, [dispatch, serverId])
 
   return (
     <div className='server_something_container'>

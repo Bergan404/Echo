@@ -26,7 +26,7 @@ export default function Channels(props) {
       setCurrentChannelId(data.channels[0].id);
       setCurrentChannelName(data.channels[0].name);
     }
-  }, [dispatch]);
+  }, [dispatch, serverId]);
   const onClick = async (e) => {
     let channelId = e.target.id;
     socket.emit("leave_room", currentChannelId);
@@ -55,7 +55,7 @@ export default function Channels(props) {
               Delete
             </button>
           )}
-          
+
           <ul className="channels_holder">
             {channels.length > 0 &&
               channels.map((channel) => (

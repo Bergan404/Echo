@@ -26,7 +26,7 @@ const LoginForm = () => {
   const handleDemo = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(login("bergan@aa.io","password"))
+    return dispatch(login("demo@aa.io","password"))
   }
 
   const updateEmail = (e) => {

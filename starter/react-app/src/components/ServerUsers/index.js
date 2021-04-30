@@ -7,10 +7,12 @@ import "./serverUsers.css";
 export default function ServerUsers() {
   const dispatch = useDispatch();
   const serverUsers = useSelector((state) => state.serverUsers);
+
   let { serverId } = useParams();
+
   useEffect(async () => {
     await dispatch(getServerUsers(serverId));
-  }, [dispatch]);
+  }, [dispatch, serverId]);
   console.log(serverUsers);
   return (
     <div>

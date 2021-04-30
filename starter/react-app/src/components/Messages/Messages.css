@@ -1,6 +1,6 @@
 .message_list {
     overflow-y: scroll;
-    max-height: 84vh
+    max-height: 94vh
 }
 
 .message_list::-webkit-scrollbar {

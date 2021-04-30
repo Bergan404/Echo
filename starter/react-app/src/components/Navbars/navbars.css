@@ -3,7 +3,7 @@
     flex-direction: column;
     background-color: var(--red);
     float: left;
-    height: 90vh;
+    height: 100vh;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
