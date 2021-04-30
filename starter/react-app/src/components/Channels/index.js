@@ -10,81 +10,112 @@ import ServerUsers from "../ServerUsers";
 import "./channels.css";
 
 export default function Channels(props) {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const channels = useSelector((state) => state.channels);
-  const user = useSelector((state) => state.session.user);
+	const history = useHistory();
+	const dispatch = useDispatch();
+	const channels = useSelector((state) => state.channels);
+	const user = useSelector((state) => state.session.user);
 
-  const [currentChannelId, setCurrentChannelId] = useState(null);
-  const [currentChannelName, setCurrentChannelName] = useState(null);
+  const [channelName, setChannelName] = useState(null)
+	const [createChannelOpen, setCreateChannelOpen] = useState(false);
+	const [currentChannelId, setCurrentChannelId] = useState(null);
+	const [currentChannelName, setCurrentChannelName] = useState(null);
 
-  let { serverId } = useParams();
-  useEffect(async () => {
-    const data = await dispatch(getChannels(serverId));
-    if (data.channels[0]) {
-      await dispatch(getMessages(serverId, data.channels[0].id));
-      setCurrentChannelId(data.channels[0].id);
-      setCurrentChannelName(data.channels[0].name);
-    }
-  }, [dispatch, serverId]);
-  const onClick = async (e) => {
-    let channelId = e.target.id;
-    socket.emit("leave_room", currentChannelId);
-    await dispatch(getMessages(serverId, channelId));
-    await setCurrentChannelId(Number(channelId));
-    await setCurrentChannelName(e.target.classList[0]);
-  };
-  useEffect(async () => {
-    socket.emit("join_room", currentChannelId);
-  }, [currentChannelId]);
+	let { serverId } = useParams();
+	useEffect(async () => {
+		const data = await dispatch(getChannels(serverId));
+		if (data.channels[0]) {
+			await dispatch(getMessages(serverId, data.channels[0].id));
+			setCurrentChannelId(data.channels[0].id);
+			setCurrentChannelName(data.channels[0].name);
+		}
+	}, [dispatch, serverId]);
+	const onClick = async (e) => {
+		let channelId = e.target.id;
+		socket.emit("leave_room", currentChannelId);
+		await dispatch(getMessages(serverId, channelId));
+		await setCurrentChannelId(Number(channelId));
+		await setCurrentChannelName(e.target.classList[0]);
+	};
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    dispatch(delExistingServer(props.server.id));
-    await history.push("/");
-  };
+	const openCreateChannel = (e) => {
+		setCreateChannelOpen(!createChannelOpen);
+	};
 
-  return (
-    <div className="inner_server_container" width="100%">
-      <div className="server-left">
-        <div className="inner_server_left">
-          <div>{props.server.name}</div>
-          <div>#{props.server.admin_id}</div>
-          {props.server?.admin_id == user?.id && (
-            <button type="submit" onClick={handleDelete}>
-              Delete
-            </button>
-          )}
+  const createChannel = async (e) => {
+    const newChannelData = await fetch(`/api/server/${serverId}/${channelName}`)
+    const newChannel = await newChannelData.json()
+    setCreateChannelOpen(false)
+    await dispatch(getChannels(serverId))
+    console.log(newChannel, "the new channel")
+    setCurrentChannelId(newChannel.id)
+    setCurrentChannelName(newChannel.name)
+    await dispatch(getMessages(serverId, newChannel.id));
+  }
 
-          <ul className="channels_holder">
-            {channels.length > 0 &&
-              channels.map((channel) => (
-                <div className="channels">
-                  <p className={channel.name} onClick={onClick} id={channel.id}>
-                    # {channel.name}
-                  </p>
-                </div>
-              ))}
-          </ul>
-        </div>
-      </div>
+	useEffect(async () => {
+    console.log(currentChannelId,'current channel')
+		socket.emit("join_room", currentChannelId);
+	}, [currentChannelId]);
 
-      <div className="server_middle">
-        <div className="server-middle">
-          <div className="server_messages">
-            <Messages
-              currentChannelId={currentChannelId}
-              currentChannelName={currentChannelName}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="server_right">
-        <div className="server-right">
-          <h1>Users</h1>
-          <ServerUsers />
-        </div>
-      </div>
-    </div>
-  );
+	const handleDelete = async (e) => {
+		e.preventDefault();
+		dispatch(delExistingServer(props.server.id));
+		await history.push("/");
+	};
+
+	return (
+		<div className="inner_server_container" width="100%">
+			<div className="server-left">
+				<div className="inner_server_left">
+					<div>{props.server.name}</div>
+					<div>#{props.server.admin_id}</div>
+					{props.server?.admin_id == user?.id && (
+						<button type="submit" onClick={handleDelete}>
+							Delete
+						</button>
+					)}
+
+					<ul className="channels_holder">
+						{channels.length > 0 &&
+							channels.map((channel) => (
+								<div className="channels">
+									<p className={channel.name} onClick={onClick} id={channel.id}>
+										# {channel.name}
+									</p>
+								</div>
+							))}
+						{createChannelOpen === false && (<button onClick={openCreateChannel}>Create Channel</button>)}
+						{createChannelOpen && (
+							<div className="create_channel">
+								<input
+									type="text"
+									onChange={(e) => setChannelName(e.target.value)}
+									value={channelName}
+                  placeholder="Enter Channel Name"
+								></input>
+								<button onClick={createChannel}>Confirm Channel</button>
+							</div>
+						)}
+					</ul>
+				</div>
+			</div>
+
+			<div className="server_middle">
+				<div className="server-middle">
+					<div className="server_messages">
+						<Messages
+							currentChannelId={currentChannelId}
+							currentChannelName={currentChannelName}
+						/>
+					</div>
+				</div>
+			</div>
+			<div className="server_right">
+				<div className="server-right">
+					<h1>Users</h1>
+					<ServerUsers />
+				</div>
+			</div>
+		</div>
+	);
 }

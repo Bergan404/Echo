@@ -14,7 +14,7 @@ def private_messages_recipient_handler(user_id):
     user_id = int(user_id)
     for private_message in private_messages:
         private_message = private_message.to_dict()
-        if user_id != private_message['sender_id']
+        if user_id != private_message['sender_id']:
             current_recipient = User.query.filter(User.id == private_message['sender_id']).first()
             recipients.add(current_recipient)
         elif user_id != private_message['reciever_id']:
