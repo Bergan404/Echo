@@ -102,8 +102,6 @@ def handlePrivateConnect():
 
 
 
-if __name__ == '__main__':
-    socketio.run(app)
 
 
 # Setup login manager
@@ -166,36 +164,6 @@ def react_root(path):
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
 
-# AWS
-# @app.route("/", methods=["POST"])
-# def upload_file():
 
-# 	# A
-#     if "user_file" not in request.files:
-#         return "No user_file key in request.files"
-
-# 	# B
-#     file    = request.files["user_file"]
-
-#     """
-#         These attributes are also available
-
-#         file.filename               # The actual name of the file
-#         file.content_type
-#         file.content_length
-#         file.mimetype
-
-#     """
-
-# 	# C.
-#     if file.filename == "":
-#         return "Please select a file"
-
-# 	# D.
-#     if file and allowed_file(file.filename):
-#         file.filename = file.filename
-#         output   	  = upload_file_to_s3(file, app.config["S3_BUCKET"])
-#         return str(output)
-
-#     else:
-#         return redirect("/")
+if __name__ == '__main__':
+    socketio.run(app)

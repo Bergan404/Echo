@@ -6,7 +6,7 @@ import "moment-timezone";
 import "./private_messages_display.css";
 
 const io = require("socket.io-client");
-export const privateSocket = io("http://localhost:5000/private");
+export const privateSocket = io("/private");
 
 export default function PrivateMessagesDisplay(props) {
   const messages = useSelector((state) => state.privateMessages);
