@@ -46,7 +46,7 @@ export default function Messages(props) {
   }, [stateMessages]);
 
   return (
-    <div>
+    <div className="message_container">
       <ul>
         {stateMessages.length &&
           stateMessages.map((message) => (
