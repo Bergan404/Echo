@@ -5,10 +5,10 @@ import random
 fake = Faker()
 
 def seed_channels():
-    def auto_seed(count):
+    def auto_seed(count, server_count):
         for i in range(count):
             name = fake.domain_word()
-            server = random.randint(1, count)
+            server = random.randint(1, server_count)
             created_at = datetime.now()
             seed_channel = Channel(name=name, server_id=server, created_at=created_at)
             db.session.add(seed_channel)
@@ -16,7 +16,7 @@ def seed_channels():
 
 
 
-    auto_seed(50)
+    auto_seed(250,50)
 
     # demo_channel = Channel(name='The Demo channel', server_id=1, created_at=datetime.now())
     # demo_channel2 = Channel(name='The Demo channel2', server_id=1, created_at=datetime.now())
