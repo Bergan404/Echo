@@ -54,7 +54,7 @@ export default function UserDivs({ user, authenticated, setAuthenticated }) {
         className="UserModalSubmit"
         onClick={openModalUsers}
       >
-        <img className='user_image' src={user.image ? user.image : "../images/default-echo-photo1.png"}></img>
+        <img className='user_image' src={user.image ? user.image : "./default-echo-photo1.png"}></img>
         <br></br>
         <p>{user.username}</p>
       </button>

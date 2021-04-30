@@ -5,28 +5,6 @@ import LeftNavBar from '../components/Navbars/LeftNavBar';
 import UserDivs from '../components/HomePage/UserDivs'
 
 function UsersList() {
-  // const [users, setUsers] = useState([]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch("/api/users/");
-  //     const responseData = await response.json();
-  //     setUsers(responseData.users);
-  //   }
-  //   fetchData();
-  // }, []);
-
-  // const userComponents = users.map((user) => {
-  //   return (
-  //     <div key={user.id} className="users_li">
-  //       <NavLink className="users_nav" to={`/users/${user.id}`}>
-  //         <img className='user_image' src={user.image ? user.image : "../images/default-echo-photo1.png"}></img>
-  //         <br></br>
-  //         <p>{user.username}</p>
-  //       </NavLink>
-  //     </div>
-  //   );
-  // });
   const allUsers = useSelector(state => state.users)
 
   return (

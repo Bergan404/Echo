@@ -18,18 +18,6 @@ const ServerForm = () => {
     const formData = new FormData();
         formData.append("image", image);
 
-        // aws uploads can be a bit slow—displaying
-        // some sort of loading message is a good idea
-
-        // const res = await fetch('/api/images', {
-        //     method: "POST",
-        //     body: formData,
-        // });
-        // if (res.ok) {
-        //     await res.json();
-        //     history.push("/images");
-        // }
-
     const data = await dispatch(serverCreate(created, name, image, ispublic));
     if (data) {
       history.push(`/server/${data.id}`);

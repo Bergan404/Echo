@@ -19,7 +19,7 @@ function User() {
             allServers?.length && allServers.map((server) => (
               <div className="servers_li">
                 <NavLink to={`/server/${server.id}`} className="servers_nav">
-                  <img className='server_image' src={server.image ? server.image : "../images/default-echo-photo1.png"}></img>
+                  <img className='server_image' src={server.image ? server.image : "./default-echo-photo1.png"}></img>
                   <br></br>
                   <p>{server.name}</p>
                 </NavLink>
