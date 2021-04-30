@@ -92,7 +92,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
             <>
               {
                 newArray?.slice(0, 8).map((server) => (
-                  <div className="servers_left">
+                  <div key={server.id} className="servers_left">
                     <NavLink to={`/server/${server.id}`} className="servers_left_nav">
                       <img className='server_left_image' src={server.image ? server.image : defaultImage }></img>
                     </NavLink>
@@ -104,7 +104,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
                   className="ServerModalSubmit"
                   onClick={openModalServer}
                 >
-                  <i class="fas fa-plus-circle"></i>
+                  <i className="fas fa-plus-circle"></i>
                 </button>
               </div>
 
@@ -127,7 +127,7 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
               </div>
               <div className='topnavdivmessage'>
                 <NavLink to='/privatemessages'>
-                  <i class="fas fa-comments"></i>
+                  <i className="fas fa-comments"></i>
                 </NavLink>
               </div>
             </> : " "
@@ -135,10 +135,11 @@ const LeftNavBar = ({ authenticated, setAuthenticated }) => {
       </div>
 
       <div className='leftnavdiv'>
-        <NavLink to="/servers" exact={true} activeClassName="active">
-          <i class="far fa-compass"></i>
-          {/* Currently brings to all users but we can fix that */}
-        </NavLink>
+        <div className="discover">
+          <NavLink to="/servers" exact={true} activeClassName="active">
+            <i className="far fa-compass"></i>
+          </NavLink>
+        </div>
       </div>
     </nav>
   );

@@ -44,10 +44,90 @@
 .server_left_image {
     width: 55px;
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .servers_left{
     margin-bottom: 8px;
 }
+.discover {
+    margin-top: 10px;
+}
+
+/* special hover effect */
+.servers_left::after {
+    content: "";
+	height: 20px;
+    border-radius: 0 20px 20px 0;
+	width: 0;
+	opacity: 0;
+	background-color: var(--lightgray);
+	position: absolute;
+	transition: all .5s;
+}
+.servers_left::after {
+    left: -2px;
+    margin-top: 17px;
+}
+.servers_left:hover::after {
+    width: 10px;
+    opacity: 0.9;
+}
+.topnavdiv::after {
+    content: "";
+	height: 20px;
+    border-radius: 0 20px 20px 0;
+	width: 0;
+	opacity: 0;
+	background-color: var(--lightgray);
+	position: absolute;
+	transition: all .5s;
+}
+.topnavdiv::after {
+    left: -2px;
+    margin-top: 17px;
+}
+.topnavdiv:hover::after {
+    width: 10px;
+    opacity: 0.9;
+}
+.topnavdivmessage::after {
+    content: "";
+	height: 20px;
+    border-radius: 0 20px 20px 0;
+	width: 0;
+	opacity: 0;
+	background-color: var(--lightgray);
+	position: absolute;
+	transition: all .5s;
+}
+.topnavdivmessage::after {
+    left: -2px;
+    margin-top: 17px;
+}
+.topnavdivmessage:hover::after {
+    width: 10px;
+    opacity: 0.9;
+}
+.discover::after {
+    content: "";
+	height: 20px;
+    border-radius: 0 20px 20px 0;
+	width: 0;
+	opacity: 0;
+	background-color: var(--lightgray);
+	position: absolute;
+	transition: all .5s;
+}
+.discover::after {
+    left: -2px;
+    margin-top: 17px;
+}
+.discover:hover::after {
+    width: 10px;
+    opacity: 0.9;
+}
+
+
 .server_left_image:hover {
     border-radius: 20px;
     cursor: pointer;
@@ -59,6 +139,7 @@
     padding: 15px;
     background-color: var(--darkred);
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .fa-compass {
     font-size: 25px;
@@ -67,6 +148,7 @@
     padding: 15px;
     background-color: var(--darkred);
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .fa-comments {
     font-size: 25px;
@@ -75,6 +157,7 @@
     padding: 15px;
     background-color: var(--darkred);
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .fa-comments:hover {
     border-radius: 20px;
@@ -126,6 +209,13 @@
     color: var(--lightgray);
     border: none;
     border-radius: 24px;
+    transition: background-color .5s ease-in-out;
+
+}
+.LoginModalSubmit:hover {
+    /* background: linear-gradient(var(--greenblue), var(--darkgreen)); */
+    background-color: var(--darkgreen);
+    cursor: pointer;
 }
 .SignUpModalSubmit {
     padding: 7px;
@@ -133,6 +223,13 @@
     color: var(--lightgray);
     border: none;
     border-radius: 24px;
+    transition: background-color .5s ease-in-out;
+
+}
+.SignUpModalSubmit:hover {
+    /* background: linear-gradient(var(--greenblue), var(--darkgreen)); */
+    background-color: var(--darkgreen);
+    cursor: pointer;
 }
 .UserModalSubmit {
     background: none;
@@ -151,6 +248,12 @@
     color: var(--lightgray);
     border: none;
     border-radius: 24px;
+    transition: background-color .5s ease-in-out;
+}
+.LogoutButton:hover {
+    /* background-color: linear-gradient(var(--greenblue), var(--darkgreen)); */
+    background-color: var(--darkgreen);
+    cursor: pointer;
 }
 .topnavdiv_foruser {
     margin-left: 10px;
@@ -202,8 +305,8 @@
     margin-bottom: auto;
 }
 .each_dude {
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
     text-align: center;
 }
 .each_dude h1 {

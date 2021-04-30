@@ -51,7 +51,7 @@ export default function UserDivs({ user, authenticated, setAuthenticated }) {
 
 
   return (
-    <div key={user.id} className="users_li">
+    <div className="users_li">
       <button
         className="UserModalSubmit"
         onClick={openModalUsers}

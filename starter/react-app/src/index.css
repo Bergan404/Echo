@@ -32,3 +32,22 @@ body::-webkit-scrollbar-thumb {
     background: var(--red);
 }
 
+/* small screens */
+@media only screen and (max-width: 900px) {
+    .we_the_dudes {
+        flex-direction: column;
+    }
+    .each_dude {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+}
+/* Large screens */
+@media only screen and (min-width: 600px) {
+
+}
+
+button:focus {
+    outline: none;
+  }

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import LeftNavBar from '../components/Navbars/LeftNavBar';
-import { findAllUsers } from '../store/all_users'
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
 
 function User({ user }) {
-  const allUsers = useSelector(state => state.users)
+  // const allUsers = useSelector(state => state.users)
   const loggedInUser = useSelector(state => state.session.user)
   const user_servers = useSelector(state => state.servers)
   const history = useHistory()
@@ -27,6 +25,7 @@ function User({ user }) {
     })
 
     const data = await response.json();
+    console.log(data)
     history.push(`/server/${server_id}`)
   }
 
@@ -35,7 +34,7 @@ function User({ user }) {
     const ourServer = [];
     const values = Object.values(user_servers);
     for (let obj in values) {
-      if (values[obj]?.admin_id == loggedInUser?.id) {
+      if (values[obj]?.admin_id === loggedInUser?.id) {
         ourServer.push(values[obj])
       }
     }

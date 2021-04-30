@@ -85,7 +85,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </NavLink>
       </div>
       <div className='navbarCenter'>
-        <h2>Echo</h2>
       </div>
       <div className="navbarContainer">
         {
@@ -153,7 +152,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 className="UserModalSubmit"
                 onClick={openModalProfile}
               >
-                <img src={user.image ? user.image : defaultImage} className='profile_picture'></img>
+                <img src={user.image ? user.image : defaultImage} className='profile_picture' alt="profile_picture"></img>
               </button>
               <Modal
                 isOpen={modalIsOpenProfile}
