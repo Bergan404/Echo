@@ -43,7 +43,7 @@ def seed_users_servers():
 
     # Second the Users
     demo = User(username='Demo', email='demo@aa.io',
-                password='password', profile_picture='https://mk0droplrg5q83m5xg0r.kinstacdn.com/wp-content/uploads/2020/06/iconfinder_discord_2308078-512x400.png',
+                password='password', profile_picture='https://echositeforthewin.s3.amazonaws.com/e2c5a41c484d4cf083cec7937bd0a5c0.png',
                 created_at=datetime.now())
 
     # Third append them and commit
