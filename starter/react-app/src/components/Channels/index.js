@@ -84,16 +84,22 @@ export default function Channels(props) {
 									</p>
 								</div>
 							))}
-						{createChannelOpen === false && (<button onClick={openCreateChannel}>Create Channel</button>)}
+						{createChannelOpen === false && (
+							<button className="LoginModalSubmit" onClick={openCreateChannel}>
+								Create Channel
+							</button>
+						)}
 						{createChannelOpen && (
-							<div className="create_channel">
+							<div className="LoginModalSubmit">
 								<input
 									type="text"
 									onChange={(e) => setChannelName(e.target.value)}
 									value={channelName}
-                  placeholder="Enter Channel Name"
+									placeholder="Enter Channel Name"
 								></input>
-								<button onClick={createChannel}>Confirm Channel</button>
+								<button className="LoginModalSubmit" onClick={createChannel}>
+									Confirm Channel
+								</button>
 							</div>
 						)}
 					</ul>
