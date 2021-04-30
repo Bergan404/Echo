@@ -29,8 +29,8 @@ app = Flask(__name__)
 
 if os.environ.get("FLASK_ENV") == "production":
     origins = [
-        "http://echo-cord.herokuapp.com/",
-        "https://echo-cord.herokuapp.com/"
+        "http://echo-cord.herokuapp.com",
+        "https://echo-cord.herokuapp.com"
     ]
 else:
     origins = "*"
