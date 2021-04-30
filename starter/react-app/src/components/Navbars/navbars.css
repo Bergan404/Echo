@@ -1,3 +1,4 @@
+/* The whole nav container for the left navbar */
 .leftnav {
     display: flex;
     flex-direction: column;
@@ -8,27 +9,21 @@
     position: sticky;
     top: 0;
 }
-.leftnavdiv {
-    /* margin-top: 10px; */
-    /* margin-bottom: 10px; */
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+
+
+/* Echo logo on left nav */
+.echo_logo {
+    width: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: width .3s ease-in-out;
+}
+.echo_logo:hover {
+    width: 50px;
 }
 .leftnavdivlogo {
     margin-top: 10px;
     /* margin-bottom: 10px; */
-    margin-left: auto;
-    margin-right: auto;
-}
-.leftnavdiv a{
-    list-style: none;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-}
-.echo_logo {
-    width: 45px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -39,30 +34,37 @@
     height: 0.12em;
     max-width: 15em;
     width: 100%;
-	box-sizing: inherit;
+    box-sizing: inherit;
 }
-.server_left_image {
-    width: 55px;
-    border-radius: 50px;
-    transition: border-radius .3s ease-in-out;
+
+
+/* Contains all the servers the user makes as well as creating and looking for servers and private messages */
+.leftnavdiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
+.leftnavdiv a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+
+/* Contains all the servers the user creates */
 .servers_left{
     margin-bottom: 8px;
 }
-.discover {
-    margin-top: 10px;
-}
-
-/* special hover effect */
 .servers_left::after {
     content: "";
-	height: 20px;
+    height: 20px;
     border-radius: 0 20px 20px 0;
-	width: 0;
-	opacity: 0;
-	background-color: var(--lightgray);
-	position: absolute;
-	transition: all .5s;
+    width: 0;
+    opacity: 0;
+    background-color: var(--lightgray);
+    position: absolute;
+    transition: all .5s;
 }
 .servers_left::after {
     left: -2px;
@@ -72,6 +74,18 @@
     width: 10px;
     opacity: 0.9;
 }
+.server_left_image {
+    width: 55px;
+    border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
+}
+.server_left_image:hover {
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* Contains the modal for creating a new server */
 .topnavdiv::after {
     content: "";
 	height: 20px;
@@ -89,6 +103,30 @@
 .topnavdiv:hover::after {
     width: 10px;
     opacity: 0.9;
+}
+.fa-plus-circle {
+    font-size: 25px;
+    color: var(--lightgray);
+    /* border: 1px solid black; */
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
+}
+.fa-plus-circle:hover {
+    border-radius: 20px;
+    cursor: pointer;
+}
+.ServerModalSubmit {
+    background: none;
+    border: none;
+}
+
+
+/* Contains the private messages */
+.topnavdivmessage {
+    margin-top: 10px;
+    margin-bottom: auto;
 }
 .topnavdivmessage::after {
     content: "";
@@ -108,6 +146,24 @@
     width: 10px;
     opacity: 0.9;
 }
+.fa-comments {
+    font-size: 25px;
+    color: var(--lightgray);
+    padding: 15px;
+    background-color: var(--darkred);
+    border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
+}
+.fa-comments:hover {
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* Contains the button to get to all servers */
+.discover {
+    margin-top: 10px;
+}
 .discover::after {
     content: "";
 	height: 20px;
@@ -126,21 +182,6 @@
     width: 10px;
     opacity: 0.9;
 }
-
-
-.server_left_image:hover {
-    border-radius: 20px;
-    cursor: pointer;
-}
-.fa-plus-circle {
-    font-size: 25px;
-    color: var(--lightgray);
-    /* border: 1px solid black; */
-    padding: 15px;
-    background-color: var(--darkred);
-    border-radius: 50px;
-    transition: border-radius .3s ease-in-out;
-}
 .fa-compass {
     font-size: 25px;
     color: var(--lightgray);
@@ -150,32 +191,13 @@
     border-radius: 50px;
     transition: border-radius .3s ease-in-out;
 }
-.fa-comments {
-    font-size: 25px;
-    color: var(--lightgray);
-    /* border: 1px solid black; */
-    padding: 15px;
-    background-color: var(--darkred);
-    border-radius: 50px;
-    transition: border-radius .3s ease-in-out;
-}
-.fa-comments:hover {
-    border-radius: 20px;
-    cursor: pointer;
-}
-.fa-plus-circle:hover {
-    border-radius: 20px;
-    cursor: pointer;
-}
 .fa-compass:hover {
     border-radius: 20px;
 }
-.ServerModalSubmit {
-    background: none;
-    border: none;
-}
 
 
+
+/* The whole nav container for the top nav bar */
 .topnav {
     background-color: var(--red);
     display: flex;
@@ -183,25 +205,22 @@
     padding: 20px;
     color: var(--lightgray);
 }
+
+
+/* Contains the Login, Signup, Profile, and Logout button */
 .navbarContainer {
     display: flex;
     margin-top: auto;
     margin-bottom: auto;
-
 }
+
+
+/* Contains the Login and Signup */
 .topnavdiv {
-    /* margin-left: 10px;
-    margin-right: 10px; */
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10px;
     margin-right: 10px;
-}
-.topnavdivmessage {
-    /* margin-left: 10px;
-    margin-right: 10px; */
-    margin-top: 10px;
-    margin-bottom: auto;
 }
 .LoginModalSubmit {
     padding: 7px;
@@ -210,10 +229,8 @@
     border: none;
     border-radius: 24px;
     transition: background-color .5s ease-in-out;
-
 }
 .LoginModalSubmit:hover {
-    /* background: linear-gradient(var(--greenblue), var(--darkgreen)); */
     background-color: var(--darkgreen);
     cursor: pointer;
 }
@@ -224,12 +241,19 @@
     border: none;
     border-radius: 24px;
     transition: background-color .5s ease-in-out;
-
 }
 .SignUpModalSubmit:hover {
-    /* background: linear-gradient(var(--greenblue), var(--darkgreen)); */
     background-color: var(--darkgreen);
     cursor: pointer;
+}
+
+
+/* Contains the User Profile and Logout buttons */
+.topnavdiv_foruser {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .UserModalSubmit {
     background: none;
@@ -237,6 +261,13 @@
     color: var(--lightgray);
     font-size: 15px;
     width: 120px;
+}
+.profile_picture {
+    width: 50px;
+    border-radius: 50px;
+    position: absolute;
+    right: 6.5em;
+    top: 10px;
 }
 .profile_picture:hover {
     border-radius: 20px;
@@ -255,19 +286,9 @@
     background-color: var(--darkgreen);
     cursor: pointer;
 }
-.topnavdiv_foruser {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-.profile_picture {
-    width: 50px;
-    border-radius: 50px;
-    position: absolute;
-    right: 6.5em;
-    top: 10px;
-}
+
+
+/* Contains the button and stlying for the creators page */
 .creators {
     text-decoration: none;
     color: var(--lightgray);

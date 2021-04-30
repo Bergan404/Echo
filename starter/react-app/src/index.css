@@ -50,4 +50,8 @@ body::-webkit-scrollbar-thumb {
 
 button:focus {
     outline: none;
-  }
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

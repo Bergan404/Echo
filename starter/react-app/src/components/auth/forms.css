@@ -33,6 +33,7 @@
     border: none;
     background-color: var(--red);
     color: var(--lightgray);
+    transition: background-color .5s ease-in-out;
 }
 .login-button:hover {
     cursor: pointer;
@@ -88,6 +89,7 @@
     border: none;
     background-color: var(--red);
     color: var(--lightgray);
+    transition: background-color .5s ease-in-out;
 }
 .signup-button:hover {
     cursor: pointer;
@@ -134,6 +136,7 @@
     border: none;
     background-color: var(--red);
     color: var(--lightgray);
+    transition: background-color .5s ease-in-out;
 }
 .server-button:hover {
     cursor: pointer;

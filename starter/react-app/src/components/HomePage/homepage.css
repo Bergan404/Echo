@@ -44,6 +44,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .user_image:hover {
     cursor: pointer;
@@ -80,6 +81,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .server_image:hover {
     border-radius: 24px;
