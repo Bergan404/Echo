@@ -10,16 +10,20 @@ def seed_users_servers():
         for i in range(count):
             admin_id = random.randint(1 ,count)
             name = fake.slug()
-            image = fake.image_url()
+            image = fake.image_url(width=80, height=80)
             public = True
             created_at=datetime.now()
+            while image == "https://dummyimage.com/80x80" or image == "https://www.lorempixel.com/80x80" or image == "https://www.lorempixel.com/80/80":
+                image = fake.image_url(width=80, height=80)
 
             seed_server = Server(admin_id=admin_id, name=name, image=image, public=public, created_at=created_at)
 
             username = fake.name()
             email = fake.email()
             password = 'password'
-            profile_picture = fake.image_url()
+            profile_picture = fake.image_url(width=80, height=80)
+            while profile_picture == "https://dummyimage.com/80x80" or profile_picture == "https://www.lorempixel.com/80x80" or profile_picture =="https://www.lorempixel.com/80/80":
+                profile_picture = fake.image_url(width=80, height=80)
 
             seed_user = User(username=username, email=email, password=password, profile_picture=profile_picture, created_at=created_at)
 
