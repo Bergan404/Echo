@@ -43,7 +43,7 @@ export default function Messages(props) {
     } else {
       setStateMessages([...stateMessages, thing]);
     }
-  }, [messages.length, thing]);
+  }, [messages.length > 0, thing]);
   useEffect(() => {
     scrollToBottom();
     socket.on("room", (msg) => {

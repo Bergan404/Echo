@@ -14,7 +14,7 @@ def seed_messages():
             created_at = datetime.now()
             seed_message = Message(messages= messages, user_id=user_id, channel_id=channel_id, created_at=created_at)
             db.session.add(seed_message)
-    auto_seed(250, 50, 50)
+    auto_seed(1000, 50, 150)
     # demo_message = Message(messages='The Demo message', reply='', user_id=1, channel_id=1, created_at=datetime.now())
     # demo_message2 = Message(messages='The Demo message2', reply='', user_id=2, channel_id=1, created_at=datetime.now())
     # demo_message3 = Message(messages='The Demo message3', reply='', user_id=2, channel_id=1, created_at=datetime.now())
