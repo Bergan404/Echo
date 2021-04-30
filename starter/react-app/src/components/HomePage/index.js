@@ -101,7 +101,7 @@ export default function Home({ authenticated, setAuthenticated }) {
               servers?.length && servers.slice(0, 10).map((server) => (
                 <div className="servers_li">
                   <NavLink to={`/server/${server.id}`} className="servers_nav">
-                    <img className='server_image' src={server.image ? server.image : "./default-echo-photo1.png"}></img>
+                    <img className='server_image' src={server.image ? server.image : {defaultImage}}></img>
                     <br></br>
                     <p>{server.name}</p>
                   </NavLink>
