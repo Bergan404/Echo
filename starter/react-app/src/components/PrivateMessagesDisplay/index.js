@@ -37,7 +37,7 @@ export default function PrivateMessagesDisplay(props) {
     } else {
       setStateMessages([...stateMessages, thing]);
     }
-  }, [messages.length > 0, thing]);
+  }, [messages.length , thing]);
   useEffect(() => {
     privateSocket.on("private_room", (msg) => {
       setThing(msg);
@@ -48,7 +48,7 @@ export default function PrivateMessagesDisplay(props) {
   return (
     <div>
       <ul>
-        {stateMessages.length &&
+        {stateMessages.length > 0 &&
           stateMessages.map((message) => (
             <div className="message_holder">
               <div className="user_image">
