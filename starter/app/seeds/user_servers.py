@@ -35,20 +35,20 @@ def seed_users_servers():
 
 
 
-    # # First the Server
-    # demo_server = Server(admin_id=1, name='The Demo Server', image='',
-    #                      public=True, created_at=datetime.now())
+    # First the Server
+    demo_server = Server(admin_id=1, name='The Demo Server', image='',
+                         public=True, created_at=datetime.now())
     # demo_server2 = Server(admin_id=2, name='The Demo Server2', image='',
     #                      public=True, created_at=datetime.now())
 
-    # # Second the Users
-    # demo = User(username='Demo', email='demo@aa.io',
-    #             password='password', profile_picture='https://www.pinkvilla.com/files/styles/contentpreview/public/rr_main.jpg?itok=jL1UvFpi',
-    #             created_at=datetime.now())
+    # Second the Users
+    demo = User(username='Demo', email='demo@aa.io',
+                password='password', profile_picture='https://mk0droplrg5q83m5xg0r.kinstacdn.com/wp-content/uploads/2020/06/iconfinder_discord_2308078-512x400.png',
+                created_at=datetime.now())
 
-    # # Third append them and commit
-    # demo.servers.append(demo_server)
-    # db.session.add(demo)
+    # Third append them and commit
+    demo.servers.append(demo_server)
+    db.session.add(demo)
 
     # # Repeat
     # jairo = User(username='Jairo', email='jairo@aa.io', password='password', profile_picture='https://avatarfiles.alphacoders.com/128/thumb-128984.png',
