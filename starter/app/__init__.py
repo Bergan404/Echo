@@ -72,9 +72,10 @@ def handleConnect():
 #---------------------------private messages --------------------
 @socketio.on('private_message', namespace='/private')
 def handlePrivateMessage(data):
+    print(data, "Our Data for private messages *****************************************************************")
     time = datetime.now()
     private_message = PrivateMessage(messages = data['messages'], sender_id = data['sender_id'], reciever_id = data['reciever_id'], created_at=time)
-
+    # print(private_message, "we want to ad this *************************************")
     db.session.add(private_message)
     db.session.commit()
     data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
@@ -85,7 +86,7 @@ def handlePrivateMessage(data):
 
 @socketio.on('join_room',namespace='/private')
 def handlePrivateJoinRoom(roomId):
-    print(roomId['roomId'], '------------------------------------------')
+    print(roomId['roomId'], 'RoomId------------------------------------------')
     join_room(roomId['roomId'])
     return None
 

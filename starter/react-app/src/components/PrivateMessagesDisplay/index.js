@@ -20,7 +20,14 @@ export default function PrivateMessagesDisplay(props) {
     if (message !== "") {
       user.messages = message;
       user.roomId = props.roomId;
-      user.reciever_id = Number(props.currentRecipientId);
+      if (props.currentRecipientId !== null) {
+        user.reciever_id = Number(props.currentRecipientId);
+        console.log(props.currentRecipientId)
+      }
+      else {
+        console.log(props.reciever_id)
+        user.reciever_id = Number(props.reciever_id)
+      }
       user.sender_id = user.id;
       privateSocket.emit("private_message", user);
       setMessage("");
@@ -35,6 +42,7 @@ export default function PrivateMessagesDisplay(props) {
     if (thing === null) {
       setStateMessages(messages);
     } else {
+      console.log(stateMessages, "state messages are here*************")
       setStateMessages([...stateMessages, thing]);
     }
   }, [messages.length , thing]);
