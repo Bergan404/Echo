@@ -37,7 +37,7 @@ export default function PrivateMessagesDisplay(props) {
     } else {
       setStateMessages([...stateMessages, thing]);
     }
-  }, [messages.length, thing]);
+  }, [messages.length > 0, thing]);
   useEffect(() => {
     privateSocket.on("private_room", (msg) => {
       setThing(msg);
@@ -82,4 +82,3 @@ export default function PrivateMessagesDisplay(props) {
     </div>
   );
 }
-
