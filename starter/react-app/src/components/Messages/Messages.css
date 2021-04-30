@@ -1,0 +1,14 @@
+.message_list {
+    overflow-y: scroll;
+    max-height: 84vh
+}
+
+.message_list::-webkit-scrollbar {
+    width: 0.30rem;
+}
+.message_list::-webkit-scrollbar-track {
+    background: var(--darkgreen);
+}
+.message_list::-webkit-scrollbar-thumb {
+    background: var(--red);
+}

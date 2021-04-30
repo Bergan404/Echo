@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Moment from "react-moment";
 import "moment-timezone";
+import "./Messages.css"
 
-// import io from "socket.io-client"
-
-// let server = "http://localhost:5000"
-// export let socket = io.connect(`${server}`)
 const io = require("socket.io-client");
 export const socket = io("http://localhost:5000");
 
@@ -17,6 +14,11 @@ export default function Messages(props) {
   const [stateMessages, setStateMessages] = useState(messages);
   const [thing, setThing] = useState(null);
 
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   const onClick = (e) => {
     e.preventDefault();
     if (message !== "") {
@@ -25,14 +27,17 @@ export default function Messages(props) {
       user.user_id = user.id;
       socket.send(user);
       setMessage("");
+      scrollToBottom();
     } else {
       alert("Please Add A Message");
     }
   };
   useEffect(() => {
+    scrollToBottom();
     setThing(null);
   }, [props.currentChannelId]);
   useEffect(() => {
+    scrollToBottom();
     if (thing === null) {
       setStateMessages(messages);
     } else {
@@ -40,14 +45,14 @@ export default function Messages(props) {
     }
   }, [messages.length, thing]);
   useEffect(() => {
+    scrollToBottom();
     socket.on("room", (msg) => {
       setThing(msg);
     });
   }, [stateMessages]);
-
   return (
-    <div>
-      <ul>
+    <div className="message_container">
+      <ul className="message_list">
         {stateMessages.length &&
           stateMessages.map((message) => (
             <div className="message_holder">
@@ -63,22 +68,21 @@ export default function Messages(props) {
               </div>
               <div className="message_box">
                 <div className="message_info">
-                <div className="message_username">
-                  {message.username}
-                </div>
-                <div className="message_time">
-                  <Moment
-                    local
-                    date={message.created_at}
-                    format="hh:mm"
-                    tz="Atlantic/Reykjavik"
-                  />
-                </div>
+                  <div className="message_username">{message.username}</div>
+                  <div className="message_time">
+                    <Moment
+                      local
+                      date={message.created_at}
+                      format="hh:mm"
+                      tz="Atlantic/Reykjavik"
+                    />
+                  </div>
                 </div>
                 <div className="message_content">{message.messages} </div>
               </div>
-            </div>
-          ))}
+              </div>
+              ))}
+              <div ref={messagesEndRef} />
       </ul>
       <div className="message_bar">
         <form onSubmit={onClick} className="message_form">

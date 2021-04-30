@@ -1,0 +1,19 @@
+.server_users {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+}
+.server_username{
+    padding-left: 7px;
+}
+
+.server_username:hover{
+    cursor: pointer;
+    color: #14A098
+}
+
+.user_image_bar {
+    width: 30px;
+    height: 30px
+}

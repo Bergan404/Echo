@@ -21,7 +21,8 @@
 
 .message_bar {
   width: 100%;
-  margin-bottom: 30px;
+  height: 0px
+  /* margin-bottom: 10px; */
 }
 
 .message_input {
@@ -85,4 +86,24 @@ color: #14A098
     text-shadow: 1px 1px 2px #0F292F;
     font-size: 14px;
     color: #CCCCCC
+}
+
+.server_messages {
+height: 100%
+}
+
+.message_container {
+  display:flex;
+  flex-direction: column;
+  height: 92vh;
+  /* justify-content: space-between; */
+}
+
+.class_container {
+  height:100%
+}
+
+.server-middle {
+  height:100%
+
 }

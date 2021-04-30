@@ -30,6 +30,7 @@ PyJWT = "==1.7.1"
 Flask-SocketIO = "*"
 boto3 = "*"
 pytz = "*"
+faker = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

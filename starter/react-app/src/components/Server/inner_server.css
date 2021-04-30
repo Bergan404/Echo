@@ -1,7 +1,8 @@
 .inner_server_container {
   display: flex;
-  /* width: 90%; */
+  /* width: 92.8536%; */
   /* justify-content: space-evenly; */
+  height: 90vh
 }
 .server-left {
   background-color: var(--darkred);
@@ -10,30 +11,34 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  height: 90vh
+
 }
 .inner_server_left {
   padding: 20px;
   margin-left: 20px;
   margin-right: 20px;
   text-align: center;
+
 }
 .server_middle {
-  background-color: var(--greener);
+  background-color: #0f292f;
   color: var(--lightgray);
   flex: auto;
-}
-.server-middle {
-  margin-left: 10px;
-  margin-right: 10px;
+  height: 92vh;
+  margin-right: 6px;
+  margin-left: 6px;
+
 }
 
 .server_right {
   background-color: var(--darkred);
   color: var(--lightgray);
-  height: 100vh;
+  height: 90vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+
 }
 .server-right {
   padding: 20px;

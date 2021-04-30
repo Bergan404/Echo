@@ -1,0 +1,15 @@
+.channels:hover {
+    cursor: pointer;
+    color: #14A098
+}
+
+.channels{
+font-weight: bold;
+padding-top: 7px;
+}
+
+.channels_holder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
