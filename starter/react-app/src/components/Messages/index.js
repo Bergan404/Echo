@@ -43,7 +43,7 @@ export default function Messages(props) {
     } else {
       setStateMessages([...stateMessages, thing]);
     }
-  }, [messages.length > 0, thing]);
+  }, [messages.length , thing]);
   useEffect(() => {
     scrollToBottom();
     socket.on("room", (msg) => {
@@ -53,7 +53,7 @@ export default function Messages(props) {
   return (
     <div className="message_container">
       <ul className="message_list">
-        {stateMessages.length &&
+        {stateMessages.length > 0 &&
           stateMessages.map((message) => (
             <div className="message_holder">
               <div className="user_image_box">
