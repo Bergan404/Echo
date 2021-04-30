@@ -6,7 +6,7 @@ import "./Messages.css"
 import { useParams } from "react-router-dom";
 
 const io = require("socket.io-client");
-export const socket = io("http://localhost:5000");
+export const socket = io();
 
 export default function Messages(props) {
   const messages = useSelector((state) => state.messages);

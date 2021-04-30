@@ -9,6 +9,8 @@ import Modal from "react-modal";
 import User from '../User'
 import UserDivs from './UserDivs'
 // import UsersList from '../UsersList'
+import header from '../Echo-header.png'
+import defaultImage from '../default-echo-photo1.png'
 
 
 import './homepage.css'
@@ -73,7 +75,7 @@ export default function Home({ authenticated, setAuthenticated }) {
         <LeftNavBar />
       </div>
       <div className='users_servers'>
-        <img className='banner' src='./Echo-header.png'></img>
+        <img className='banner' src={header}></img>
         <div className='users_container'>
           <h2 className='user_h2'><NavLink to="/users" exact={true} activeClassName="active" className='user_a'>
             Users

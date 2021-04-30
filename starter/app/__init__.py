@@ -46,6 +46,7 @@ user_counter = 0
 # Socket handler for receiving a message
 @socketio.on('message')
 def handleMessage(data):
+    print(data, "-0-0-0-0-0-0-0-0--0-0-0-0-0-0-0-0-0-0")
     time = datetime.now()
     message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
     db.session.add(message)
