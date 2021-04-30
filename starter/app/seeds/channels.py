@@ -6,9 +6,11 @@ from datetime import datetime
 def seed_channels():
     demo_channel = Channel(name='The Demo channel', server_id=1, created_at=datetime.now())
     demo_channel2 = Channel(name='The Demo channel2', server_id=1, created_at=datetime.now())
+    demo_channel3 = Channel(name='The Demo channel', server_id=2, created_at=datetime.now())
 
     db.session.add(demo_channel)
     db.session.add(demo_channel2)
+    db.session.add(demo_channel3)
 
     db.session.commit()
 

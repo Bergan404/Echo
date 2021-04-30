@@ -11,7 +11,7 @@ def seed_users_servers():
 
     # Second the Users
     demo = User(username='Demo', email='demo@aa.io',
-                password='password', profile_picture='',
+                password='password', profile_picture='https://www.pinkvilla.com/files/styles/contentpreview/public/rr_main.jpg?itok=jL1UvFpi',
                 created_at=datetime.now())
 
     # Third append them and commit
