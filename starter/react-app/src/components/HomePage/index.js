@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { findAllServers } from '../../store/servers'
 import { findAllUsers } from '../../store/all_users'
 import LeftNavBar from '../../components/Navbars/LeftNavBar';
-import Modal from "react-modal";
-import User from '../User'
 import UserDivs from './UserDivs'
 // import UsersList from '../UsersList'
 import header from '../Echo-header.png'
@@ -15,56 +13,15 @@ import defaultImage from '../default-echo-photo1.png'
 
 import './homepage.css'
 
-const customStyles = {
-  overlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: "rgba(0, 0, 0, 0.8)",
-    zIndex: 5,
-  },
-  content: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    borderRadius: "10px",
-    padding: "20px",
-    backgroundColor: "var(--darkgreen)",
-    border: "none",
-  },
-};
 
-Modal.setAppElement("#root");
-
-export default function Home({ authenticated, setAuthenticated }) {
+export default function Home() {
   const dispatch = useDispatch();
 
   const servers = useSelector(state => state.servers)
   const allUsers = useSelector(state => state.users)
   const [isLoaded, setIsLoaded] = useState(false);
-  const [modalIsOpenLogin, setIsOpenLogin] = useState(false);
-
-  function openModalUsers() {
-    setIsOpenLogin(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
-
-  function closeModalUsers() {
-    setIsOpenLogin(false);
-  }
 
   useEffect(async () => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     await dispatch(findAllServers())
     await dispatch(findAllUsers())
   }, [dispatch])
@@ -84,9 +41,9 @@ export default function Home({ authenticated, setAuthenticated }) {
           <div className="ten-servers">
             {
               allUsers?.length && allUsers.slice(0, 10).map((user) => (
-                <>
-                  <UserDivs user={user} />
-                </>
+                <div key={user.id}>
+                  <UserDivs user={user}  />
+                </div>
               ))
             }
           </div>
@@ -99,9 +56,9 @@ export default function Home({ authenticated, setAuthenticated }) {
           <div className="ten-servers">
             {
               servers?.length && servers.slice(0, 10).map((server) => (
-                <div className="servers_li">
+                <div key={server.id} className="servers_li">
                   <NavLink to={`/server/${server.id}`} className="servers_nav">
-                    <img className='server_image' src={server.image ? server.image : {defaultImage}}></img>
+                    <img className='server_image' src={server.image ? server.image : {defaultImage}} alt="server_image"></img>
                     <br></br>
                     <p>{server.name}</p>
                   </NavLink>

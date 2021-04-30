@@ -29,12 +29,6 @@ export const authenticate = () => async (dispatch) => {
 
 }
 
-export const restoreUser = () => async (dispatch) => {
-    const response = await fetch('/api/session');
-    const data = await response.json();
-    dispatch(setUser(data.user));
-    return response;
-};
 
 export const login = (email, password) => async (dispatch) => {
     const response = await fetch('/api/auth/login', {

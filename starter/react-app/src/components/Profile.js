@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import LeftNavBar from '../components/Navbars/LeftNavBar';
-import { findAllUsers } from '../store/all_users'
+import React from "react";
 import { useSelector } from "react-redux";
 
 import './index.css'
 
 
 function Profile({ user }) {
-  const allUsers = useSelector(state => state.users)
+  // const allUsers = useSelector(state => state.users)
 
   return (
     <div className="profile">
