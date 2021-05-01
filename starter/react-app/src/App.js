@@ -54,7 +54,10 @@ function App() {
         <Route path="/server/:serverId" exact={true}>
           <Server />
         </Route>
-        <Route path='/privatemessages' exact={true}>
+        <Route path='/privatemessages/:reciever_id'>
+          <PrivateMessages />
+        </Route>
+        <Route path='/privatemessages'>
           <PrivateMessages />
         </Route>
       </Switch>

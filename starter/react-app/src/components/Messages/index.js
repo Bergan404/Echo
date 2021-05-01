@@ -61,7 +61,7 @@ export default function Messages(props) {
             <div className="message_holder">
               <div className="user_image_box">
                 <img
-                  className="user_image user_image_message"
+                  className="user_image_message"
                   src={
                     message.image
                       ? message.image

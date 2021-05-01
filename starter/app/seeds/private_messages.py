@@ -16,7 +16,7 @@ def seed_private_messages():
                 reciever_id = random.randint(1, user_count)
             seed_private_message = PrivateMessage(messages=messages, sender_id=sender_id, reciever_id=reciever_id, created_at=created_at)
             db.session.add(seed_private_message)
-    auto_seed(250, 50)
+    auto_seed(250, 51)
 
     # demo_privateMessage1 = PrivateMessage(messages='The Demo privateMessage1', sender_id=1, reciever_id=2, created_at=datetime.now())
     # demo_privateMessage2 = PrivateMessage(messages='The Demo privateMessage2', sender_id=2, reciever_id=1, created_at=datetime.now())

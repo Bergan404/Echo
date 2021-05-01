@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from app.models import User, db, Server, Channel, Message, server_users
 from app.forms import ServerForm
 from app.helpers import(upload_file_to_s3, allowed_file, get_unique_filename)
-
+from datetime import datetime
 
 server_routes = Blueprint('server', __name__)
 
@@ -91,7 +91,6 @@ def create_server():
 def delete_server():
     serverId = request.json
     server = Server.query.get(serverId)
-    print(serverId)
     db.session.delete(server)
     db.session.commit()
 
@@ -103,6 +102,13 @@ def addServerUser():
     server = Server.query.get(data["server_id"])
     user.servers.append(server)
     db.session.commit()
-    print(user, '-----------------------------------')
-    print(server, '-----------------------------------')
     return {'hello': "hello"}
+
+@server_routes.route('/<server_id>/<channel_name>')
+def addChannel(server_id, channel_name):
+    name = channel_name
+    created_at = datetime.now()
+    new_channel = Channel(name= name, server_id= server_id, created_at= created_at)
+    db.session.add(new_channel)
+    db.session.commit()
+    return new_channel.to_dict()
