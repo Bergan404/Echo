@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import LeftNavBar from '../components/Navbars/LeftNavBar';
+import defaultImage from './default-echo-photo1.png'
+
 
 
 function User() {
@@ -19,7 +21,7 @@ function User() {
             allServers?.length && allServers.map((server) => (
               <div className="servers_li">
                 <NavLink to={`/server/${server.id}`} className="servers_nav">
-                  <img className='server_image' src={server.image ? server.image : "../images/default-echo-photo1.png"}></img>
+                  <img className='server_image' src={server.image ? server.image : defaultImage }></img>
                   <br></br>
                   <p>{server.name}</p>
                 </NavLink>

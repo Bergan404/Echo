@@ -3,11 +3,16 @@ import { useSelector } from "react-redux";
 import { privateSocket } from "../components/PrivateMessagesDisplay";
 import { useHistory } from "react-router-dom";
 
-function User({ user }) {
-	const loggedInUser = useSelector((state) => state.session.user);
-	const user_servers = useSelector((state) => state.servers);
-	const history = useHistory();
-  const [trigger, setTrigger] = useState(false)
+
+
+
+	function User({ user }) {
+		// const allUsers = useSelector(state => state.users)
+		const loggedInUser = useSelector(state => state.session.user)
+		const user_servers = useSelector(state => state.servers)
+		const [trigger, setTrigger] = useState(false)
+  const history = useHistory()
+
 
 	const handlePrivateMessage = async (e) => {
 		const recipientId = e.target.id;
@@ -29,13 +34,11 @@ function User({ user }) {
       await privateSocket.emit("join_room", { roomId: loggedInUser.roomId });
       await privateSocket.emit("private_message", loggedInUser);
       history.push(`/privatemessages/${user.id}`);
-    }
+  }}, [trigger]);
 
-	}, [trigger]);
 
 	const addUser = async (e) => {
 		e.preventDefault();
-		console.log(user_id, server_id);
 		const response = await fetch("/api/server/adduser", {
 			method: "POST",
 			headers: {
@@ -47,9 +50,8 @@ function User({ user }) {
 			}),
 		});
 		const data = await response.json();
-		console.log(data);
+		history.push(`/server/${server_id}`);
 	};
-
 	let newArray;
 	function usersServers() {
 		const ourServer = [];
@@ -94,7 +96,6 @@ function User({ user }) {
 								return (
 									<option value={server.id}>
 										{server.name}
-										{console.log(server.id)}
 									</option>
 								);
 							})}

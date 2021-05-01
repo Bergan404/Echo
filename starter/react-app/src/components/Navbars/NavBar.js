@@ -6,6 +6,8 @@ import LogoutButton from '../auth/LogoutButton';
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
 import Profile from '../Profile'
+import defaultImage from '../default-echo-photo1.png'
+
 
 
 import './navbars.css';
@@ -83,7 +85,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </NavLink>
       </div>
       <div className='navbarCenter'>
-        <h2>Echo</h2>
       </div>
       <div className="navbarContainer">
         {
@@ -151,7 +152,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 className="UserModalSubmit"
                 onClick={openModalProfile}
               >
-                <img src={user.image ? user.image : "../images/default-echo-photo1.png"} className='profile_picture'></img>
+                <img src={user.image ? user.image : defaultImage} className='profile_picture' alt="profile_picture"></img>
               </button>
               <Modal
                 isOpen={modalIsOpenProfile}

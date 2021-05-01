@@ -13,16 +13,14 @@
     text-decoration: none;
 }
 .user_a {
-    color: var(--darkgreen);
+    color: var(--lightgray);
     text-decoration: none;
 }
 .user_h2 {
     margin-top: 20px;
-    background-color: var(--lightgray);
+    background: linear-gradient(var(--darkred), var(--red));
     width: 300px;
     text-align: center;
-    color: var(--darkgreen);
-
 }
 .users_li {
     margin-top: 20px;
@@ -46,6 +44,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .user_image:hover {
     cursor: pointer;
@@ -62,10 +61,11 @@
 .ten-servers {
     /* margin-top: 0; */
     display: flex;
+    flex-wrap: wrap;
 }
 .server_h2 {
-    background-color: var(--lightgray);
-    color: var(--darkgreen);
+    background: linear-gradient(var(--darkred), var(--red));
+    color: var(--lightgray);
     width: 300px;
     text-align: center;
 }
@@ -81,6 +81,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    transition: border-radius .3s ease-in-out;
 }
 .server_image:hover {
     border-radius: 24px;

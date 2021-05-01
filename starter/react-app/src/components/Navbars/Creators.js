@@ -9,20 +9,20 @@ export default function Creators() {
         </div>
         <div className="we_the_dudes">
             <div className='each_dude'>
-                <h1>Christopher Kyle |</h1>
-                <a href='https://github.com/ckyle6300'><i class="fab fa-github"></i></a>
+                <h1>Christopher Kyle</h1>
+                <a href='https://github.com/ckyle6300'><i className="fab fa-github"></i></a>
             </div>
             <div className='each_dude'>
-                <h1>Bergan Oudshoorn |</h1>
-                <a href='https://github.com/Bergan404'><i class="fab fa-github"></i></a>
+                <h1>Bergan Oudshoorn</h1>
+                <a href='https://github.com/Bergan404'><i className="fab fa-github"></i></a>
             </div>
             <div className='each_dude'>
-                <h1>Jairo Calderon |</h1>
-                <a href='https://github.com/JairoCal'><i class="fab fa-github"></i></a>
+                <h1>Jairo Calderon</h1>
+                <a href='https://github.com/JairoCal'><i className="fab fa-github"></i></a>
             </div>
             <div className='each_dude'>
                 <h1>Mike Mihalchik</h1>
-                <a href='https://github.com/mike4344'><i class="fab fa-github"></i></a>
+                <a href='https://github.com/mike4344'><i className="fab fa-github"></i></a>
             </div>
         </div>
     </div>

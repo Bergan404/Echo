@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import User from '../User'
 import Modal from "react-modal";
+import defaultImage from '../default-echo-photo1.png'
+
 
 import './homepage.css'
 
@@ -49,12 +51,12 @@ export default function UserDivs({ user, authenticated, setAuthenticated }) {
 
 
   return (
-    <div key={user.id} className="users_li">
+    <div className="users_li">
       <button
         className="UserModalSubmit"
         onClick={openModalUsers}
       >
-        <img className='user_image' src={user.image ? user.image : "../images/default-echo-photo1.png"}></img>
+        <img className='user_image' src={user.image ? user.image : defaultImage}></img>
         <br></br>
         <p>{user.username}</p>
       </button>
