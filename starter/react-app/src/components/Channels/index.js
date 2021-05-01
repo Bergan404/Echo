@@ -67,10 +67,10 @@ export default function Channels(props) {
 		<div className="inner_server_container" width="100%">
 			<div className="server-left">
 				<div className="inner_server_left">
-					<div>{props.server.name}</div>
+					<div className="Server_name">{props.server.name}</div>
 					<div>#{props.server.admin_id}</div>
 					{props.server?.admin_id == user?.id && (
-						<button type="submit" onClick={handleDelete}>
+						<button className="delete_button" type="submit" onClick={handleDelete}>
 							Delete
 						</button>
 					)}
@@ -85,7 +85,7 @@ export default function Channels(props) {
 								</div>
 							))}
 						{createChannelOpen === false && (
-							<button className="LoginModalSubmit" onClick={openCreateChannel}>
+							<button className="CreateChannel" onClick={openCreateChannel}>
 								Create Channel
 							</button>
 						)}
