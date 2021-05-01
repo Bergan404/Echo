@@ -11,15 +11,13 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  width: 200px;
-
 }
 .inner_server_left {
   padding: 20px;
   margin-left: 20px;
   margin-right: 20px;
   text-align: center;
-
+  width: max-content;
 }
 .server_middle {
   background-color: #0f292f;
