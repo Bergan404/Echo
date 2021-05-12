@@ -37,24 +37,19 @@ else:
 
 # create your SocketIO instance
 socketio = SocketIO(app, cors_allowed_origins=origins)
-
-
-
 # socketio = SocketIO(app, cors_allowed_origins="*")
-user_counter = 0
+
 
 # Socket handler for receiving a message
 @socketio.on('message')
 def handleMessage(data):
-    print(data, "-0-0-0-0-0-0-0-0--0-0-0-0-0-0-0-0-0-0")
     time = datetime.now()
-    message = Message(messages = data['messages'], user_id = data['user_id'], created_at=time, channel_id = data['room'])
+    message = Message(messages=data['messages'], user_id=data['user_id'],
+                      created_at=time, channel_id=data['room'])
     db.session.add(message)
     db.session.commit()
     data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
-
     emit('room', data, to=data['room'])
-    #send(data, room=data['room'])
 
 
 @socketio.on('join_room')
@@ -62,47 +57,46 @@ def handleJoinRoom(roomId):
     join_room(roomId)
     return None
 
+
 @socketio.on('leave_room')
 def handleLeaveRoom(roomId):
     leave_room(roomId)
     return None
+
+
 @socketio.on('connect')
 def handleConnect():
     print(request, 'I am from connect to socket')
 
-#---------------------------private messages --------------------
+# ---------------------------private messages --------------------
+
+
 @socketio.on('private_message', namespace='/private')
 def handlePrivateMessage(data):
-    print(data, "Our Data for private messages *****************************************************************")
     time = datetime.now()
-    private_message = PrivateMessage(messages = data['messages'], sender_id = data['sender_id'], reciever_id = data['reciever_id'], created_at=time)
-    # print(private_message, "we want to ad this *************************************")
+    private_message = PrivateMessage(
+        messages=data['messages'], sender_id=data['sender_id'], reciever_id=data['reciever_id'], created_at=time)
     db.session.add(private_message)
     db.session.commit()
     data['created_at'] = time.strftime("%d %b %y %H:%M:%S") + " GMT"
-
     emit('private_room', data, to=data['roomId'], namespace='/private')
-    #send(data, room=data['room'])
 
 
-@socketio.on('join_room',namespace='/private')
+@socketio.on('join_room', namespace='/private')
 def handlePrivateJoinRoom(roomId):
-    print(roomId['roomId'], 'RoomId------------------------------------------')
     join_room(roomId['roomId'])
     return None
 
-@socketio.on('leave_room',namespace='/private')
+
+@socketio.on('leave_room', namespace='/private')
 def handlePrivateLeaveRoom(roomId):
     leave_room(roomId)
     return None
 
-@socketio.on('connect',namespace='/private')
+
+@socketio.on('connect', namespace='/private')
 def handlePrivateConnect():
     print(request, 'I am from connect to private socket')
-
-
-
-
 
 
 # Setup login manager
@@ -123,7 +117,8 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(main_routes, url_prefix='/api/main')
 app.register_blueprint(server_routes, url_prefix='/api/server')
-app.register_blueprint(private_messages_routes, url_prefix='/api/private_messages')
+app.register_blueprint(private_messages_routes,
+                       url_prefix='/api/private_messages')
 db.init_app(app)
 Migrate(app, db)
 

@@ -45,6 +45,4 @@ def get_private_messages_handler(user_id, reciever_id):
             message['profile_picture']= user_object['profile_picture']
         except:
             pass
-
-
     return {"privateMessages": private_messages_dict}

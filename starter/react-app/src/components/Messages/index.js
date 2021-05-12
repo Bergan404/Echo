@@ -22,6 +22,7 @@ export default function Messages(props) {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  // the onClick handler for when we click on the submit button for a message
   const onClick = (e) => {
     e.preventDefault();
     if (message !== "") {
@@ -35,10 +36,19 @@ export default function Messages(props) {
       alert("Please Add A Message");
     }
   };
+// When the current channel changes we set THING to be null
+// This is a holder for our message
   useEffect(() => {
     scrollToBottom();
     setThing(null);
   }, [props.currentChannelId]);
+
+
+  // when there is a change in THING, serverId, or the amount of
+  // messages(redux store) we trigger this useEffect
+  // the purpose of this useEffect is if thing is null then we set state messages to messages
+  // from redux store. Else if thing is not null then we set stateMessages to the
+  // stateMessages and add the new message (which is what the backend sends back to us through the emit "room")
   useEffect(() => {
     scrollToBottom();
     if (thing === null) {
@@ -47,12 +57,18 @@ export default function Messages(props) {
       setStateMessages([...stateMessages, thing]);
     }
   }, [messages.length , thing, serverId]);
+
+  // the purpose of this useEffect is to check if there is a trigger in the stateMessages
+  // then we use the socket.on method to receive the data passed in from the backend socket
+  // which at this point we set it equal to the THING
   useEffect(() => {
     scrollToBottom();
     socket.on("room", (msg) => {
       setThing(msg);
     });
   }, [stateMessages]);
+
+
   return (
     <div className="message_container">
       <ul className="message_list">
@@ -96,7 +112,6 @@ export default function Messages(props) {
             onChange={(e) => setMessage(e.target.value)}
             placeholder={`Send a message to ${props.currentChannelName}...`}
           ></textarea>
-          {/* <input type="submit" value="Submit" /> */}
           <button className="message_send" onClick={onClick}>
             Send
           </button>

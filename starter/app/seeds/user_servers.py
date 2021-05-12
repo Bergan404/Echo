@@ -50,26 +50,26 @@ def seed_users_servers():
     demo.servers.append(demo_server)
     db.session.add(demo)
 
-    # # Repeat
-    # jairo = User(username='Jairo', email='jairo@aa.io', password='password', profile_picture='https://avatarfiles.alphacoders.com/128/thumb-128984.png',
-    #             created_at=datetime.now())
+    # Repeat
+    jairo = User(username='Jairo', email='jairo@aa.io', password='password', profile_picture='https://avatarfiles.alphacoders.com/128/thumb-128984.png',
+                created_at=datetime.now())
 
-    # jairo.servers.append(demo_server2)
-    # db.session.add(jairo)
+    jairo.servers.append(demo_server2)
+    db.session.add(jairo)
 
-    # mike = User(username='Mike', email='mike@aa.io', password='password', profile_picture='',
-    #             created_at=datetime.now())
+    mike = User(username='Mike', email='mike@aa.io', password='password', profile_picture='',
+                created_at=datetime.now())
 
-    # mike.servers.append(demo_server2)
-    # db.session.add(mike)
+    mike.servers.append(demo_server2)
+    db.session.add(mike)
 
-    # bergan = User(username='Bergan', email='bergan@aa.io', password='password', profile_picture='',
-    #               created_at=datetime.now())
-    # chris = User(username='Chris', email='chris@aa.io', password='password', profile_picture='',
-    #             created_at=datetime.now())
+    bergan = User(username='Bergan', email='bergan@aa.io', password='password', profile_picture='',
+                  created_at=datetime.now())
+    chris = User(username='Chris', email='chris@aa.io', password='password', profile_picture='',
+                created_at=datetime.now())
 
-    # db.session.add(bergan)
-    # db.session.add(chris)
+    db.session.add(bergan)
+    db.session.add(chris)
 
     db.session.commit()
 
