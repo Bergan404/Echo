@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import  { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 
@@ -26,7 +26,7 @@ const LoginForm = () => {
   const handleDemo = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(login("demo@aa.io","password"))
+    return dispatch(login("demo@aa.io", "password"))
   }
 
   const updateEmail = (e) => {

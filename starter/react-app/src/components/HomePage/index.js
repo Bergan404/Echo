@@ -40,7 +40,9 @@ const customStyles = {
   },
 };
 
-export default function Home() {
+Modal.setAppElement("#root");
+
+export default function Home({ authenticated, setAuthenticated }) {
   const history = useHistory()
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
@@ -80,6 +82,7 @@ export default function Home() {
 
   let clickHandler = (e) => {
     if (user) {
+      console.log(e.target)
       history.push(`/server/${e.target.id}`)
     } else {
       openModalLogin()
@@ -88,39 +91,41 @@ export default function Home() {
 
   return (
     <div className='outer_container'>
+      {!user &&
+        <Modal
+          isOpen={modalIsOpenLogin}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModalLogin}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <LoginForm
+            setIsOpenLogin={setIsOpenLogin}
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+            openModalSignUp={openModalSignUp}
+            closeModalLogin={closeModalLogin}
+          />
+        </Modal>
+      }
       <Modal
-                  isOpen={modalIsOpenLogin}
-                  onAfterOpen={afterOpenModal}
-                  onRequestClose={closeModalLogin}
-                  style={customStyles}
-                  contentLabel="Example Modal"
-                >
-                  <LoginForm
-                    setIsOpenLogin={setIsOpenLogin}
-                    // authenticated={authenticated}
-                    // setAuthenticated={setAuthenticated}
-                    openModalSignUp={openModalSignUp}
-                    closeModalLogin={closeModalLogin}
-                  />
+        isOpen={
+          authenticated === true
+            ? false :
+            modalIsOpenSignUp
+        }
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModalSignUp}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <SignUpForm
+          // authenticated={authenticated}
+          // setAuthenticated={setAuthenticated}
+          closeModalSignUp={closeModalSignUp}
+          openModalLogin={openModalLogin}
+        />
       </Modal>
-      <Modal
-                  isOpen={
-                    // authenticated === true
-                    //   ? false :
-                       modalIsOpenSignUp
-                  }
-                  onAfterOpen={afterOpenModal}
-                  onRequestClose={closeModalSignUp}
-                  style={customStyles}
-                  contentLabel="Example Modal"
-                >
-                  <SignUpForm
-                    // authenticated={authenticated}
-                    // setAuthenticated={setAuthenticated}
-                    closeModalSignUp={closeModalSignUp}
-                    openModalLogin={openModalLogin}
-                  />
-                </Modal>
       <div className='left'>
         <LeftNavBar />
       </div>
@@ -135,7 +140,7 @@ export default function Home() {
             {
               allUsers?.length && allUsers.slice(0, 10).map((user) => (
                 <div key={user.id}>
-                  <UserDivs user={user}  />
+                  <UserDivs user={user} />
                 </div>
               ))
             }
@@ -150,11 +155,11 @@ export default function Home() {
             {
               servers?.length && servers.slice(0, 10).map((server) => (
                 <div onClick={clickHandler} id={server.id} key={server.id} className="servers_li">
-                  <NavLink to={`/server/${server.id}`} className="servers_nav">
-                    <img className='server_image' src={server.image ? server.image : {defaultImage}} alt="server_image"></img>
+                  <div id={server.id} className="servers_nav">
+                    <img id={server.id} className='server_image' src={server.image ? server.image : { defaultImage }} alt="server_image"></img>
                     <br></br>
-                    <p>{server.name}</p>
-                  </NavLink>
+                    <p id={server.id}>{server.name}</p>
+                  </div>
                 </div>
               ))
             }

@@ -81,7 +81,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <nav className='topnav'>
       <div className="creators_wrapper">
         <NavLink to="/creators" exact={true} activeClassName="active" className='creators'>
-            Creators
+          Creators
           </NavLink>
       </div>
       <div className='navbarCenter'>
