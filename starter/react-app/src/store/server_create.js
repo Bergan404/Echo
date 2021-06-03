@@ -19,7 +19,7 @@ export const delExistingServer = (serverId) => async (dispatch) => {
         },
         body: JSON.stringify(serverId)
     })
-    dispatch(deleteServer())
+    dispatch(deleteServer(serverId))
 }
 
 
@@ -51,8 +51,9 @@ export default function createReducer(state = { create: {} }, action) {
         case CREATE_SERVER:
             return action.payload;
         case DELETE_SERVER:
-            state = {}
-            return state
+            const newState = { ...state };
+            delete newState[action.payload];
+            return newState;
         default:
             return state;
 

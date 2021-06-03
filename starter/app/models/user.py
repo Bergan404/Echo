@@ -2,19 +2,17 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-
 # ---------------Joint Table (many to many connection)----------------
 # when creating a joint table it is highly recommended to go about it by creating the table
 # like this rather than with a class like any other normal table
 server_users = db.Table(
     'server_users',
-    db.Column(
-        "user_id", db.Integer, db.ForeignKey('users.id'), nullable=False
-    ),
-    db.Column(
-        "server_id", db.Integer, db.ForeignKey('servers.id'), nullable=False
-    )
-)
+    db.Column("user_id", db.Integer, db.ForeignKey('users.id'),
+              nullable=False),
+    db.Column("server_id",
+              db.Integer,
+              db.ForeignKey('servers.id'),
+              nullable=False))
 
 
 # -------------------- User Class Table --------------------------------
@@ -34,8 +32,10 @@ class User(db.Model, UserMixin):
     messages = db.relationship('Message', back_populates='users')
 
     # the relationship for the joints table
-    servers = db.relationship(
-        'Server', secondary=server_users, back_populates='users', lazy='dynamic')
+    servers = db.relationship('Server',
+                              secondary=server_users,
+                              back_populates='users',
+                              lazy='dynamic')
 
     @property
     def password(self):
@@ -59,6 +59,7 @@ class User(db.Model, UserMixin):
 
 # ------------------------------Servers Table ----------------------------------
 
+
 class Server(db.Model):
     __tablename__ = 'servers'
 
@@ -72,8 +73,10 @@ class Server(db.Model):
     # relations
     channels = db.relationship('Channel', back_populates='servers')
     admin = db.relationship('User', back_populates='server_admin')
-    users = db.relationship('User', secondary=server_users,
-                            back_populates='servers', lazy='dynamic')
+    users = db.relationship('User',
+                            secondary=server_users,
+                            back_populates='servers',
+                            lazy='dynamic')
 
     def to_dict(self):
         return {
@@ -82,5 +85,8 @@ class Server(db.Model):
             "image": self.image,
             "public": self.public,
             "admin_id": self.admin_id,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'server_users': [user.to_dict() for user in self.users]
         }
+
+        # "comments”: [comment.to_dict() for comment in self.comment_video],

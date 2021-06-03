@@ -17,6 +17,22 @@ export const findAllServers = () => async (dispatch) => {
   return null
 }
 
+export const delExistingServer = (serverId) => async (dispatch) => {
+  const response = await fetch('/api/server/', {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(serverId)
+  })
+  if (response.ok) {
+    const servers = await response.json()
+    return dispatch(allServers(servers))
+  } else {
+    return null;
+  }
+}
+
 // reducer
 // const initialState = {};
 
