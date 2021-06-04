@@ -1,7 +1,7 @@
-![header]()
+![header](https://github.com/Bergan404/Echo/blob/master/starter/react-app/src/components/Echo-header.png)
 
-## Welcome to Bavarians"R"Us
-***[Bavarians"R"Us](https://bavarians-r-us.herokuapp.com/)*** is a site that is made for the BMW enthusiast, based off of [FCPEuro](https://www.fcpeuro.com/), Users have the ability to come by and look at the recent discussions or the recent posts, they also have the option to be able to create a discussion or post, as well as purchase products.
+## Welcome to Echo
+***[Echo](https://echo-cord.herokuapp.com/)*** is a site that is made for the friends to talk with friends, being a clone of [Discord](https://discord.com/brand-new) it uses live messaging so that the users can chat real time.
 
 #### Technologies: React, Redux, Python, Flask, SQLAlchemy, CSS3
 
