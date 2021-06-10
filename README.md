@@ -29,7 +29,8 @@ On this page the user has the option to create a new server and choose wether th
 ![server_create](https://github.com/Bergan404/Echo/blob/master/ReadMEImages/server_create.png)
 
 ## Live Chat
-![gif](https://github.com/Bergan404/Echo/blob/master/ReadMEImages/live_chat.gif)
+Web Sockets are used to implement this live chat so that users can seemlessly message one another within the server channels that are created.
+![gif](https://github.com/Bergan404/Echo/blob/master/ReadMEImages/live%20chat(echo).gif)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
