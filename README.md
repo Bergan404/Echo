@@ -24,7 +24,7 @@ This is the page the user will see the moment they arrive at the site and as a s
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## The Server Create Modal
-On this page the user has the option to create a new server and choose wether the server is going to be a public or a private server.
+On this page the user has the option to create a new server and choose wether the server is going to be a public or a private server. This is also the page where the admin can created the channels for all the users within the server to talk within.
 
 ![server_create](https://github.com/Bergan404/Echo/blob/master/ReadMEImages/server_create.png)
 
