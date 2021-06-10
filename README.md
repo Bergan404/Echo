@@ -28,6 +28,9 @@ On this page the user has the option to create a new server and choose wether th
 
 ![server_create](https://github.com/Bergan404/Echo/blob/master/ReadMEImages/server_create.png)
 
+## Live Chat
+![gif](https://github.com/Bergan404/Echo/blob/master/ReadMEImages/live_chat.gif)
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ***[Full Wiki](https://github.com/Bergan404/Echo/wiki)***
